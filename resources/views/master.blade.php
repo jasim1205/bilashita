@@ -59,55 +59,62 @@
             <div class="container">
                 <nav class="dev3-25d3ticmqvls0">
                     <div class="dev3-243ztdnf8yww0 dev3-2gwcdwkqhmi00">
-                        <a href="{{ route('home') }}"><img
-                                src="{{ asset('assets/images/logo.png') }}" alt=""></a> <a href="#"
-                            class="dev3-di0jbv86i000"><i class="fa-solid fa-xmark"></i></a> </div>
+                        <a href="{{ route('home') }}"><img src="{{ asset('assets/images/logo.png') }}"
+                                alt=""></a> <a href="#" class="dev3-di0jbv86i000"><i
+                                class="fa-solid fa-xmark"></i></a>
+                    </div>
                     <ul class="dev3-243ztdnf8yww0">
                         @foreach ($categories as $category)
-                        <li class="dev3-3m8wtemb60w00">
-                            <a href="#"><i class="bi bi-justify"></i>{{ $category->category_name}}<i
-                                    class="fa-solid fa-angle-down"></i></a>
-                            <div class="dev3-1gygrqpnsm5c0">
-                                <div class="container-fluid">
-                                    <div class="row">
+                            <li class="dev3-3m8wtemb60w00">
+                                <a href="#"><i class="bi bi-justify"></i>{{ $category->category_name }}<i
+                                        class="fa-solid fa-angle-down"></i></a>
+                                <div class="dev3-1gygrqpnsm5c0">
+                                    <div class="container-fluid">
+                                        <div class="row">
 
-                                        <div class="col-12 col-lg-3">
-                                            <ul class="dev3-rkv9dgqv1b40">
-                                                @php
-                                                    $subcategories = DB::table("db_subcategory")->where('category_id', $category->id)->get();
-                                                @endphp
-                                                {{-- <li><img src="assets/images/ng-1.jpg" alt="Image"/></li> --}}
-                                                @foreach ($subcategories as $sub)
-                                                <div class="dev3-3b9hjbbf11e00">
-                                                    <i class="bi bi-arrow-right"></i>
-                                                    {{ $sub->subcategory_name ?? ''}}
-                                                </div>
-                                                    <ul class="dev3-12eh4crkm0ls0">
-                    @php
-                        $childcategories = DB::table("db_childcategory")->where("subcategory_id",$sub->id)->get();
-                    @endphp
+                                            <div class="col-12 col-lg-3">
+                                                <ul class="dev3-rkv9dgqv1b40">
+                                                    @php
+                                                        $subcategories = DB::table('db_subcategory')
+                                                            ->where('category_id', $category->id)
+                                                            ->get();
+                                                    @endphp
+                                                    {{-- <li><img src="assets/images/ng-1.jpg" alt="Image"/></li> --}}
+                                                    @foreach ($subcategories as $sub)
+                                                        <div class="dev3-3b9hjbbf11e00">
+                                                            <i class="bi bi-arrow-right"></i>
+                                                            {{ $sub->subcategory_name ?? '' }}
+                                                        </div>
+                                                        <ul class="dev3-12eh4crkm0ls0">
+                                                            @php
+                                                                $childcategories = DB::table('db_childcategory')
+                                                                    ->where('subcategory_id', $sub->id)
+                                                                    ->get();
+                                                            @endphp
 
-                                                        @foreach ($childcategories as $child)
-                                                            <li><a href="#">{{ $child->childcategory_name }}</a></li>
-                                                        @endforeach
-                                                    </ul>
-                                                @endforeach
-                                            </ul>
+                                                            @foreach ($childcategories as $child)
+                                                                <li><a
+                                                                        href="#">{{ $child->childcategory_name }}</a>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                            {{--  --}}
                                         </div>
-                                        {{--  --}}
                                     </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
                         @endforeach
                     </ul>
-                    <div class="dev3-243ztdnf8yww0 dev3-3syxh487kww00">
+                    {{-- <div class="dev3-243ztdnf8yww0 dev3-3syxh487kww00">
                         <form action="{{ route('search_product') }}" method="get"> <input required type="text"
                                 name="item_name" class="form-control" placeholder="search your product..."
                                 aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"> <button
                                 class="input-group-text" id="inputGroup-sizing-sm" type="submit"> <i
                                     class="fa fa-search"></i> </button> </form>
-                    </div>
+                    </div> --}}
                     <ul class="dev3-243ztdnf8yww0">
                         <li class="dev3-3m8wtemb60w00 dev3-9uy6i2cdjmw0">
                             <a href="#"><i class="bi bi-person"></i>My Account <i
