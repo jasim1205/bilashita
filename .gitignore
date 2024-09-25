@@ -16,6 +16,6 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-# /pos/application/config/database.php
+/pos/application/config/database.php
 /pos/.htaccess
 /epos/*
