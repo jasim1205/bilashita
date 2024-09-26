@@ -74,4 +74,3 @@ Route::group(['middleware'=>isCustomer::class],function(){
 
     });
 });
-

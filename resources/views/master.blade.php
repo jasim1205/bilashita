@@ -53,7 +53,7 @@
             </div>
         </div>
         @php
-            $categories = \App\Models\Category::limit(5)->get();
+            $categories = \App\Models\Category::where('status',1)->limit(5)->get();
         @endphp
         <div class="dev3-2lvevpbewi200">
             <div class="container">
@@ -72,8 +72,6 @@
                                     <div class="container-fluid">
                                         <div class="row">
 
-                                            <div class="col-12 col-lg-3">
-                                                <ul class="dev3-rkv9dgqv1b40">
                                                     @php
                                                         $subcategories = DB::table('db_subcategory')
                                                             ->where('category_id', $category->id)
@@ -81,9 +79,14 @@
                                                     @endphp
                                                     {{-- <li><img src="assets/images/ng-1.jpg" alt="Image"/></li> --}}
                                                     @foreach ($subcategories as $sub)
+                                            <div class="col-12 col-lg-3">
+                                                <ul class="dev3-rkv9dgqv1b40">
                                                         <div class="dev3-3b9hjbbf11e00">
+                                                            <a href="{{ url("/category/$category->id/$sub->id") }}">
+
                                                             <i class="bi bi-arrow-right"></i>
                                                             {{ $sub->subcategory_name ?? '' }}
+                                                            </a>
                                                         </div>
                                                         <ul class="dev3-12eh4crkm0ls0">
                                                             @php
@@ -94,13 +97,13 @@
 
                                                             @foreach ($childcategories as $child)
                                                                 <li><a
-                                                                        href="#">{{ $child->childcategory_name }}</a>
+                                                                        href="{{ url("/products/$category->id/$sub->id/$child->id")}}">{{ $child->childcategory_name }}</a>
                                                                 </li>
                                                             @endforeach
                                                         </ul>
-                                                    @endforeach
                                                 </ul>
                                             </div>
+                                                    @endforeach
                                             {{--  --}}
                                         </div>
                                     </div>
