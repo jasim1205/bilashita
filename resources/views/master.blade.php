@@ -66,8 +66,7 @@
                     <ul class="dev3-243ztdnf8yww0">
                         @foreach ($categories as $category)
                             <li class="dev3-3m8wtemb60w00">
-                                <a href="#"><i class="bi bi-justify"></i>{{ $category->category_name }}<i
-                                        class="fa-solid fa-angle-down"></i></a>
+                                <a href="#"><i class="bi bi-justify"></i>{{ $category->category_name }}<i class="bi bi-chevron-down"></i></a>
                                 <div class="dev3-1gygrqpnsm5c0">
                                     <div class="container-fluid">
                                         <div class="row">
