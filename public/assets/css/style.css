@@ -275,7 +275,7 @@ header {
   color: rgba(5, 53, 33, 0.8980392157);
 }
 .section-product .product-groups .card button {
-  font-size: 0.625rem;
+  /* font-size: 0.625rem; */
   text-align: center;
   align-items: center;
   display: flex;
@@ -292,7 +292,7 @@ header {
   line-height: 0.4rem;
 }
 .section-product .product-groups .card .card-body .price {
-  font-size: 0.625rem;
+  /* font-size: 0.625rem; */
 }
 .section-product .product-groups .card .card-body p {
   gap: 0.3rem;
@@ -301,12 +301,12 @@ header {
 }
 .section-product .product-groups .card .card-body p .regular-price {
   color: tomato;
-  font-size: 0.625rem;
+  /* font-size: 0.625rem; */
 }
 .section-product .product-groups .card .card-body p .current-price {
   color: #8A1E1C;
   font-weight: bold;
-  font-size: 0.75rem;
+  /* font-size: 0.75rem; */
 }
 
 .product-card {
