@@ -56,7 +56,7 @@
             $categories = \App\Models\Category::where('status',1)->limit(5)->get();
         @endphp
         <div class="dev3-2lvevpbewi200">
-            <div class="container">
+            <div class="container-fluid">
                 <nav class="dev3-25d3ticmqvls0">
                     <div class="dev3-243ztdnf8yww0 dev3-2gwcdwkqhmi00">
                         <a href="{{ route('home') }}"><img src="{{ asset('assets/images/logo.png') }}"
