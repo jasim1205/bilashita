@@ -3,7 +3,6 @@
   scroll-behavior: smooth;
   padding: 0;
   margin: 0;
-  /* font-size: 18px; */
 }
 
 ::-webkit-scrollbar {
@@ -29,6 +28,7 @@
 
 html {
   box-sizing: border-box;
+  font-size: 16px !important;
 }
 
 html,
@@ -227,7 +227,7 @@ header {
 .section-categories .category-group .card .cat-title {
   font-weight: 600;
   font-family: "Roboto", sans-serif;
-  font-size: 0.625rem;
+  /* font-size: 0.625rem; */
 }
 .section-product-ads {
   margin: 0.625rem 0;
@@ -252,7 +252,7 @@ header {
   display: grid;
   justify-content: center;
   text-align: center;
-  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
   gap: 0.5rem;
 }
 .section-product .product-groups .card {

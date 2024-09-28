@@ -280,7 +280,7 @@ header {
             .cat-title {
                 font-weight: 600;
                 font-family: $font-roboto;
-                font-size: rem(10);
+                // font-size: rem(10);
             }
 
             img {}
@@ -315,7 +315,7 @@ header {
         display: grid;
         justify-content: center;
         text-align: center;
-        grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
         gap: .5rem;
 
         .card {
