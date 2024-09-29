@@ -142,7 +142,7 @@
                                 </a> --}}
                             <a href="{{ route('cart.page') }}">
                                 <em
-                                    class="round">{{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }}</em>
+                                    class="round" id="totalCart">{{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }}</em>
                                 <i class="fa-solid fa-cart-shopping"></i>
 
                             </a>
@@ -265,6 +265,36 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
     <script type="module" src="{{ asset('assets/js/app.js') }}"></script>
+
+<script>
+  $('.categorybutton').each(function(e){
+      if($(this).hasClass('cat{{isset(request()->route()->parameters["category_id"])?request()->route()->parameters["category_id"]:''}}')){
+          $(this).addClass("show");
+          $(this).next('ul').addClass("show");
+      }
+  })
+  $('.subcategorybutton').each(function(e){
+      if($(this).hasClass('subcat{{isset(request()->route()->parameters["subcategory_id"])?request()->route()->parameters["subcategory_id"]:''}}')){
+          $(this).addClass("show");
+          $(this).next('ul').addClass("show");
+      }
+  })
+  $('.childcategorybutton').each(function(e){
+      if($(this).hasClass('chcat{{isset(request()->route()->parameters["childcategory_id"])?request()->route()->parameters["childcategory_id"]:''}}')){
+          $(this).addClass("show");
+      }
+  })
+
+
+  /*$('.categorybutton').click(function(){
+      window.location=$(this).attr('href');
+  })
+  $('.subcategorybutton').click(function(){
+      window.location=$(this).attr('href');
+  })*/
+</script>
+
+@stack('scripts')
 </body>
 <!-- Mirrored from dev3design.com/demos/dev3-menu/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Sep 2024 06:27:18 GMT -->
 

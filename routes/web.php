@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\ChildCategoryController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\JsonController;
 use App\Models\CustomerAuth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,11 @@ use App\Http\Middleware\isCustomer;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Json frontend Response
+
+Route::post('/add-to-card', [JsonController::class, 'addToCart'])->name('add-to-cart');
+
 
 Route::get('/',[FrontendController::class,'index']);
 Route::get('/home',[FrontendController::class,'index'])->name('home');

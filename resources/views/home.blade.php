@@ -4,7 +4,7 @@
 
 
     <!--  ? H E R O   S E C T I O N -->
-    <section class="section-hero">
+    <section class="section-hero mt-5">
     <div class="container">
         {{-- <div class="row">
             <div class="col-md-3">
@@ -99,7 +99,7 @@
                 <h4 class="title">Popular Products</h4>
             </div>
             <div class="product-groups">
-                @foreach ($product as $p)
+                @foreach ($popular_products as $p)
                     <div class="card">
                         <a href="{{ route('product_details.singleProduct',$p->id) }}">
                               <img src="{{ asset('./../pos/' . $p->item_image) }}" alt="categories-1" width="100px">
@@ -117,7 +117,7 @@
                             <input type="hidden" name="product_id" value="{{ $p->id }}">
                             <input type="hidden" id="qtyBox" placeholder="1" value="1" name="order_qty" />
                             <div class="card-button">
-                                <button type="submit" class="cartsubmit btn btn-light" style="width: 100px;">
+                                <button onclick="addToCard('{{$p->id }}')" type="button" class="cartsubmit btn btn-light" style="width: 100px;">
                                     <i class="fa-solid fa-basket-shopping"></i>
                                         <span>Buy Now</span>
                                     </button>
@@ -215,103 +215,44 @@
     <!--  ! P O P U L A R  P R O D U C T  S E C T I O N -->
 
 
-    {{-- <!--  ? T O P   S A L E S  P R O D U C T   S E C T I O N -->
+     <!--  ? T O P   S A L E S  P R O D U C T   S E C T I O N -->
     <section class="section-product">
         <div class="container">
             <div class="row">
                 <h4 class="title">Top Sales Product</h4>
             </div>
             <div class="product-groups">
-                <div class="card">
-                    <img src="{{ asset('assets/images/product-1.png') }}" alt="categories-1" width="100px">
-                    <div class="card-body">
-                        <h5 class="card-title">Airphone 6</h5>
-                        <p>
-                            <span class="current-price">3000.00</span>
-                            <span class="regular-price"><strike>3000.00</strike></span>
-                        </p>
-                        <p class="price">Price</p>
+                 @foreach ($top_products as $p)
+                    <div class="card">
+                        <a href="{{ route('product_details.singleProduct',$p->id) }}">
+                              <img src="{{ asset('./../pos/' . $p->item_image) }}" alt="categories-1" width="100px">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $p->item_name }}</h5>
+                            <p>
+                                <span class="current-price">{{ $p->web_price .' '.'TK' }}</span>
+                                <span class="regular-price"><strike>3000.00</strike></span>
+                            </p>
+                            <p class="price">Price</p>
+                        </div>
+                        <form class="" action="{{ route('add-to.cart') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{ $p->id }}">
+                            <input type="hidden" id="qtyBox" placeholder="1" value="1" name="order_qty" />
+                            <div class="card-button">
+                                <button onclick="addToCard('{{$p->id }}')" type="button" class="cartsubmit btn btn-light" style="width: 100px;">
+                                    <i class="fa-solid fa-basket-shopping"></i>
+                                        <span>Buy Now</span>
+                                    </button>
+                                {{-- <i class="fa-solid fa-basket-shopping"></i>
+                                <input class="cartsubmit" type="submit" value="Buy Now" /> --}}
+                                {{--  <a href="{{ route('product_details.singleProduct',$p->id) }}">+ Add to Card</a>  --}}
+                                <a href="#"></a>
+                                {{--  <a href="{{ route('addwishlist',$p->id) }}"><i class="bi bi-heart-fill"></i></a>  --}}
+                              </div>
+                        </form>
                     </div>
-                    <button type="button" class="btn btn-light">
-                       <i class="fa-solid fa-basket-shopping"></i>
-                        Buy Now
-                    </button>
-                </div>
-                <div class="card">
-                    <img src="{{ asset('assets/images/product-1.png') }}" alt="categories-1" width="100px">
-                    <div class="card-body">
-                        <h5 class="card-title">Airphone 6</h5>
-                        <p>
-                            <span class="current-price">3000.00</span>
-                            <span class="regular-price"><strike>3000.00</strike></span>
-                        </p>
-                        <p class="price">Price</p>
-                    </div>
-                    <button type="button" class="btn btn-light">
-                      <i class="fa-solid fa-basket-shopping"></i>
-                        Buy Now
-                    </button>
-                </div>
-                <div class="card">
-                    <img src="{{ asset('assets/images/product-1.png') }}" alt="categories-1" width="100px">
-                    <div class="card-body">
-                        <h5 class="card-title">Airphone 6</h5>
-                        <p>
-                            <span class="current-price">3000.00</span>
-                            <span class="regular-price"><strike>3000.00</strike></span>
-                        </p>
-                        <p class="price">Price</p>
-                    </div>
-                    <button type="button" class="btn btn-light">
-                        <i class="fa-solid fa-basket-shopping"></i>
-                        Buy Now
-                    </button>
-                </div>
-                <div class="card">
-                    <img src="{{ asset('assets/images/product-1.png') }}" alt="categories-1" width="100px">
-                    <div class="card-body">
-                        <h5 class="card-title">Airphone 6</h5>
-                        <p>
-                            <span class="current-price">3000.00</span>
-                            <span class="regular-price"><strike>3000.00</strike></span>
-                        </p>
-                        <p class="price">Price</p>
-                    </div>
-                    <button type="button" class="btn btn-light">
-                        <i class="fa-solid fa-basket-shopping"></i>
-                        Buy Now
-                    </button>
-                </div>
-                <div class="card">
-                    <img src="{{ asset('assets/images/product-1.png') }}" alt="categories-1" width="100px">
-                    <div class="card-body">
-                        <h5 class="card-title">Airphone 6</h5>
-                        <p>
-                            <span class="current-price">3000.00</span>
-                            <span class="regular-price"><strike>3000.00</strike></span>
-                        </p>
-                        <p class="price">Price</p>
-                    </div>
-                    <button type="button" class="btn btn-light">
-                        <i class="fa-solid fa-basket-shopping"></i>
-                        Buy Now
-                    </button>
-                </div>
-                <div class="card">
-                    <img src="{{ asset('assets/images/product-1.png') }}" alt="categories-1" width="100px">
-                    <div class="card-body">
-                        <h5 class="card-title">Airphone 6</h5>
-                        <p>
-                            <span class="current-price">3000.00</span>
-                            <span class="regular-price"><strike>3000.00</strike></span>
-                        </p>
-                        <p class="price">Price</p>
-                    </div>
-                    <button type="button" class="btn btn-light">
-                        <i class="fa-solid fa-basket-shopping"></i>
-                        Buy Now
-                    </button>
-                </div>
+                    @endforeach
             </div>
         </div>
     </section>
@@ -322,106 +263,73 @@
     <section class="section-product">
         <div class="container">
             <div class="row">
-                <h4 class="title">Offer Products Product</h4>
+                <h4 class="title">Offer Product</h4>
             </div>
             <div class="product-groups">
-                <div class="card">
-                    <img src="{{ asset('assets/images/product-1.png') }}" alt="categories-1" width="100px">
-                    <div class="card-body">
-                        <h5 class="card-title">Airphone 6</h5>
-                        <p>
-                            <span class="current-price">3000.00</span>
-                            <span class="regular-price"><strike>3000.00</strike></span>
-                        </p>
-                        <p class="price">Price</p>
+                 @foreach ($offer_products as $p)
+                    <div class="card">
+                        <a href="{{ route('product_details.singleProduct',$p->id) }}">
+                              <img src="{{ asset('./../pos/' . $p->item_image) }}" alt="categories-1" width="100px">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $p->item_name }}</h5>
+                            <p>
+                                <span class="current-price">{{ $p->web_price .' '.'TK' }}</span>
+                                <span class="regular-price"><strike>3000.00</strike></span>
+                            </p>
+                            <p class="price">Price</p>
+                        </div>
+                        <form class="" action="{{ route('add-to.cart') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{ $p->id }}">
+                            <input type="hidden" id="qtyBox" placeholder="1" value="1" name="order_qty" />
+                            <div class="card-button">
+                                <button onclick="addToCard('{{$p->id }}')" type="button" class="cartsubmit btn btn-light" style="width: 100px;">
+                                    <i class="fa-solid fa-basket-shopping"></i>
+                                        <span>Buy Now</span>
+                                    </button>
+                                {{-- <i class="fa-solid fa-basket-shopping"></i>
+                                <input class="cartsubmit" type="submit" value="Buy Now" /> --}}
+                                {{--  <a href="{{ route('product_details.singleProduct',$p->id) }}">+ Add to Card</a>  --}}
+                                <a href="#"></a>
+                                {{--  <a href="{{ route('addwishlist',$p->id) }}"><i class="bi bi-heart-fill"></i></a>  --}}
+                              </div>
+                        </form>
                     </div>
-                    <button type="button" class="btn btn-light">
-                        <i class="fa-solid fa-basket-shopping"></i>
-                        Buy Now
-                    </button>
-                </div>
-                <div class="card">
-                    <img src="{{ asset('assets/images/product-1.png') }}" alt="categories-1" width="100px">
-                    <div class="card-body">
-                        <h5 class="card-title">Airphone 6</h5>
-                        <p>
-                            <span class="current-price">3000.00</span>
-                            <span class="regular-price"><strike>3000.00</strike></span>
-                        </p>
-                        <p class="price">Price</p>
-                    </div>
-                    <button type="button" class="btn btn-light">
-                        <i class="fa-solid fa-basket-shopping"></i>
-                        Buy Now
-                    </button>
-                </div>
-                <div class="card">
-                    <img src="{{ asset('assets/images/product-1.png') }}" alt="categories-1" width="100px">
-                    <div class="card-body">
-                        <h5 class="card-title">Airphone 6</h5>
-                        <p>
-                            <span class="current-price">3000.00</span>
-                            <span class="regular-price"><strike>3000.00</strike></span>
-                        </p>
-                        <p class="price">Price</p>
-                    </div>
-                    <button type="button" class="btn btn-light">
-                        <i class="fa-solid fa-basket-shopping"></i>
-                        Buy Now
-                    </button>
-                </div>
-                <div class="card">
-                    <img src="{{ asset('assets/images/product-1.png') }}" alt="categories-1" width="100px">
-                    <div class="card-body">
-                        <h5 class="card-title">Airphone 6</h5>
-                        <p>
-                            <span class="current-price">3000.00</span>
-                            <span class="regular-price"><strike>3000.00</strike></span>
-                        </p>
-                        <p class="price">Price</p>
-                    </div>
-                    <button type="button" class="btn btn-light">
-                        <i class="fa-solid fa-basket-shopping"></i>
-                        Buy Now
-                    </button>
-                </div>
-                <div class="card">
-                    <img src="{{ asset('assets/images/product-1.png') }}" alt="categories-1" width="100px">
-                    <div class="card-body">
-                        <h5 class="card-title">Airphone 6</h5>
-                        <p>
-                            <span class="current-price">3000.00</span>
-                            <span class="regular-price"><strike>3000.00</strike></span>
-                        </p>
-                        <p class="price">Price</p>
-                    </div>
-                    <button type="button" class="btn btn-light">
-                       <i class="fa-solid fa-basket-shopping"></i>
-                        Buy Now
-                    </button>
-                </div>
-                <div class="card">
-                    <img src="{{ asset('assets/images/product-1.png') }}" alt="categories-1" width="100px">
-                    <div class="card-body">
-                        <h5 class="card-title">Airphone 6</h5>
-                        <p>
-                            <span class="current-price">3000.00</span>
-                            <span class="regular-price"><strike>3000.00</strike></span>
-                        </p>
-                        <p class="price">Price</p>
-                    </div>
-                    <button type="button" class="btn btn-light">
-                        <i class="fa-regular fa-circle-user"></i>
-                        Buy Now
-                    </button>
-                </div>
+                    @endforeach
             </div>
         </div>
     </section>
-    <!--  ! P O P U L A R  P R O D U C T  S E C T I O N --> --}}
+    <!--  ! P O P U L A R  P R O D U C T  S E C T I O N -->
 
 
 
     <!-- ! E N D -->
 
 @endsection
+
+@push('scripts')
+<script>
+ const addToCard = (product_id) => {
+let totalCart = $("#totalCart").text();
+    const url = "{{ route('add-to-cart') }}";
+    const token = "{{ csrf_token() }}";
+    const data = {
+        _token: token,
+        product_id: product_id,
+        order_qty: 1
+    }
+     $.ajax({
+        url,
+        type: "POST",
+        data,
+        success: function(data){
+            if(data.status == true){
+                $("#totalCart").text(parseFloat(totalCart) +1);
+            }
+  }
+    });
+ }
+
+</script>
+@endpush
