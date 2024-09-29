@@ -56,7 +56,7 @@
             $categories = \App\Models\Category::where('status',1)->limit(5)->get();
         @endphp
         <div class="dev3-2lvevpbewi200">
-            <div class="container">
+            <div class="container-fluid">
                 <nav class="dev3-25d3ticmqvls0">
                     <div class="dev3-243ztdnf8yww0 dev3-2gwcdwkqhmi00">
                         <a href="{{ route('home') }}"><img src="{{ asset('assets/images/logo.png') }}"
@@ -66,8 +66,7 @@
                     <ul class="dev3-243ztdnf8yww0">
                         @foreach ($categories as $category)
                             <li class="dev3-3m8wtemb60w00">
-                                <a href="#"><i class="bi bi-justify"></i>{{ $category->category_name }}<i
-                                        class="fa-solid fa-angle-down"></i></a>
+                                <a href="#"><i class="bi bi-justify"></i>{{ $category->category_name }}<i class="bi bi-chevron-down"></i></a>
                                 <div class="dev3-1gygrqpnsm5c0">
                                     <div class="container-fluid">
                                         <div class="row">

@@ -281,7 +281,7 @@ header {
             .cat-title {
                 font-weight: 600;
                 font-family: $font-roboto;
-                font-size: rem(10);
+                // font-size: rem(10);
             }
 
             img {}
@@ -316,7 +316,7 @@ header {
         display: grid;
         justify-content: center;
         text-align: center;
-        grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
         gap: .5rem;
 
         .card {
@@ -341,7 +341,7 @@ header {
             }
 
             button {
-                font-size: rem(10);
+                // font-size: rem(10);
                 text-align: center;
                 align-items: center;
                 display: flex;
@@ -361,7 +361,7 @@ header {
                 line-height: .4rem;
 
                 .price {
-                    font-size: rem(10);
+                    // font-size: rem(10);
                 }
 
                 p {
@@ -371,13 +371,13 @@ header {
 
                     .regular-price {
                         color: tomato;
-                        font-size: rem(10);
+                        // font-size: rem(10);
                     }
 
                     .current-price {
                         color: $main-tex-color-red;
                         font-weight: bold;
-                        font-size: rem(12)
+                        // font-size: rem(12)
                     }
                 }
             }
