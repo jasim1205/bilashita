@@ -60,7 +60,7 @@
                     @forelse ($carts as $cartitem)
                     <tr>
                         <td>
-                          <img class="img-fluid" src="{{ asset('./../pos/') }}/{{ $cartitem->options->product_image }}" alt=""/>
+                          <img style="height: 80px" class="img-fluid" src="{{ asset('./../pos/') }}/{{ $cartitem->options->product_image }}" alt=""/>
                         </td>
                         <td>{{ $cartitem->name }}</td>
                         <td>{{ $cartitem->price }} TK</td>
