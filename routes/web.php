@@ -27,7 +27,8 @@ use App\Http\Middleware\isCustomer;
 
 // Json frontend Response
 
-Route::post('/add-to-card', [JsonController::class, 'addToCart'])->name('add-to-cart');
+Route::post('/add-to-cart', [JsonController::class, 'addToCart'])->name('add-to-cart');
+Route::get('/remove-from-cart/{cart_id}', [JsonController::class, 'removeFromCart'])->name('remove-from-cart');
 
 
 Route::get('/',[FrontendController::class,'index']);

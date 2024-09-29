@@ -58,7 +58,7 @@
                 </thead>
                 <tbody>
                     @forelse ($carts as $cartitem)
-                    <tr>
+                    <tr id="product_{{$cartitem->rowId}}">
                         <td>
                           <img style="height: 80px" class="img-fluid" src="{{ asset('./../pos/') }}/{{ $cartitem->options->product_image }}" alt=""/>
                         </td>
@@ -69,9 +69,12 @@
                         </td>
                         <td>{{ $cartitem->price*$cartitem->qty  }} TK</td>
                         <td>
-                            <a href="{{ route('removefrom.cart',['cart_id' => $cartitem->rowId]) }}">
+                            {{-- <a href="{{ route('removefrom.cart',['cart_id' => $cartitem->rowId]) }}">
                                 <i class="ms-3 text-danger bi bi-x-circle-fill"></i>
-                            </a>
+                            </a> --}}
+                            <button  class="btn btn-sm btn-transparent" type="button" onclick="reomveProduct('{{$cartitem->rowId }}')">
+                                <i class="ms-3 text-danger bi bi-x-circle-fill"></i>
+                            </button>
                         </td>
                       </tr>
                     @empty
@@ -154,6 +157,34 @@
             qty.value=parseInt(qty.value) -1;
         }
     });
+
+
 </script>
 
 @endsection
+
+@push('scripts')
+
+<script>
+
+       const reomveProduct = (product_id) => {
+            let totalCart = $("#totalCart").text();
+            const url = "{{ url('remove-from-cart') }}/"+product_id;
+            const tr = document.getElementById(`product_${product_id}`);
+            const token = "{{ csrf_token() }}";
+            const data = {
+                _token: token
+            }
+            $.ajax({
+                url,
+                type: "GET",
+                data,
+                success: function(data){
+                    if(data.status == true){
+                        tr.remove()
+                    }
+                }
+            });
+    }
+</script>
+@endpush

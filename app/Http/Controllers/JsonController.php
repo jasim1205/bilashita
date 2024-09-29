@@ -88,4 +88,15 @@ class JsonController extends Controller
             ], 500);
         }
     }
+
+    public function removeFromCart($cart_id)
+    {
+        Cart::remove($cart_id);
+        // $this->couponCheck();
+
+        return response([
+            'status' => true,
+            'message' => "Product has been removed!"
+        ], 200);
+    }
 }
