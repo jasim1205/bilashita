@@ -110,14 +110,26 @@
 .quentity input[type="text"]:focus {
   outline: none;
 }
-.quentity input[type="submit"] {
+.single-submit {
   background-color: #038e42c9;
   color: #fff;
   border-radius: 20px;
-  padding: 10px 20px;
+  padding: 10px 5px;
   border: none;
   margin: 0 10px;
   font-weight: bold;
+  cursor: pointer;
+}
+.single-cartsubmit{
+    background-color: #038e42c9;
+    color: #fff;
+    border-radius: 20px;
+     padding: 5px 5px;
+    border: none;
+    /* margin: 0 10px; */
+    font-weight: bold;
+    width: 126px;
+    cursor: pointer;
 }
 .quentity .bi:last-child {
   background-color: rgb(206, 206, 206);

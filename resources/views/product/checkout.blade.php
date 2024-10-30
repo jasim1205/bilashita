@@ -7,8 +7,9 @@
             <p class="text-center bg-warning p-2 text-white"><b>Chackout Details</b></p>
             <hr />
             <div class="m-auto my-3 ms-5">
-                <form action="{{ route('customer.placeorder') }}" method='post'>
+                <form action="{{ route('customer.placeorder') }}" id="checkoutForm" method='post'>
                     @csrf
+                    <input type="hidden" id="cartItemCount" value="{{ count($carts) }}">
                     <div class="row">
                         <div class="col-7 w-50 mt-1">
                             <h3>Shipping Details</h3>
@@ -189,7 +190,8 @@
                                     <tfoot>
                                     </tfoot>
                                 </table>
-                                <button type="submit" class="submit shadow">place Order</button>
+                                <button type="submit" class="submit shadow" onclick="disableButton(this)">place Order</button>
+                                <p id="cartErrorMessage" class="text-danger mt-2" style="display: none;">Your cart is empty. Please add items to your cart before placing an order.</p>
                             </div>
                         </div>
                     </div>
@@ -202,6 +204,14 @@
 <script>
     // District wise Upazilla Change
     $(document).ready(function() {
+        $('#checkoutForm').on('submit', function(e) {
+            const cartItemCount = parseInt($('#cartItemCount').val());
+            if (cartItemCount === 0) {
+                e.preventDefault();
+                $('#cartErrorMessage').show(); // Show error message
+            }
+        });
+
         $('#district_id').on('change', function() {
             var district_id = $(this).val();
             // console.log();

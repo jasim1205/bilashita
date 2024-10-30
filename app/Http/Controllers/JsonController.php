@@ -92,7 +92,7 @@ class JsonController extends Controller
     public function removeFromCart($cart_id)
     {
         Cart::remove($cart_id);
-        // $this->couponCheck();
+        $this->couponCheck();
 
         return response([
             'status' => true,

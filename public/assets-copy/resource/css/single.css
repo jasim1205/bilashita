@@ -110,7 +110,7 @@
 .quentity input[type="text"]:focus {
   outline: none;
 }
-.quentity input[type="submit"] {
+.single-submit {
   background-color: #038e42c9;
   color: #fff;
   border-radius: 20px;
@@ -118,6 +118,7 @@
   border: none;
   margin: 0 10px;
   font-weight: bold;
+  cursor: pointer;
 }
 .quentity .bi:last-child {
   background-color: rgb(206, 206, 206);

@@ -2,7 +2,11 @@
 
 @section('content')
 
-
+<style>
+    .reguler-price{
+        color: tomato;
+    }
+</style>
     <!--  ? H E R O   S E C T I O N -->
     <section class="section-hero mt-5">
     <div class="container">
@@ -107,12 +111,12 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $p->item_name }}</h5>
                             <p>
-                                <span class="current-price">{{ $p->web_price .' '.'TK' }}</span>
-                                <span class="regular-price"><strike>3000.00</strike></span>
+                                <span class="current-price">{{ $p->web_price .' '.'TK'}}</span>
                             </p>
+                            <p class="regular-price"><strike class="regular-price">3000.00</strike></p>
                             <p class="price">Price</p>
                         </div>
-                        <form class="" action="{{ route('add-to.cart') }}" method="post">
+                        <form class="" action="{{ route('add-to-cart') }}" method="post">
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $p->id }}">
                             <input type="hidden" id="qtyBox" placeholder="1" value="1" name="order_qty" />
@@ -231,11 +235,11 @@
                             <h5 class="card-title">{{ $p->item_name }}</h5>
                             <p>
                                 <span class="current-price">{{ $p->web_price .' '.'TK' }}</span>
-                                <span class="regular-price"><strike>3000.00</strike></span>
                             </p>
+                            <p class="regular-price"><strike class="regular-price">3000.00</strike></p>
                             <p class="price">Price</p>
                         </div>
-                        <form class="" action="{{ route('add-to.cart') }}" method="post">
+                        <form class="" action="{{ route('add-to-cart') }}" method="post">
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $p->id }}">
                             <input type="hidden" id="qtyBox" placeholder="1" value="1" name="order_qty" />
@@ -275,11 +279,11 @@
                             <h5 class="card-title">{{ $p->item_name }}</h5>
                             <p>
                                 <span class="current-price">{{ $p->web_price .' '.'TK' }}</span>
-                                <span class="regular-price"><strike>3000.00</strike></span>
                             </p>
+                            <p class="regular-price"><strike class="regular-price">3000.00</strike></p>
                             <p class="price">Price</p>
                         </div>
-                        <form class="" action="{{ route('add-to.cart') }}" method="post">
+                        <form class="" action="{{ route('add-to-cart') }}" method="post">
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $p->id }}">
                             <input type="hidden" id="qtyBox" placeholder="1" value="1" name="order_qty" />

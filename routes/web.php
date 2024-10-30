@@ -46,7 +46,7 @@ Route::get('/product-list/{childcategory_id}', [ProductController::class,'produc
 Route::get('/product_details/{id}', [ProductController::class,'singleProduct'])->name('product_details.singleProduct');
 
 Route::get('/shopping-cart',[CartController::class,'cartPage'])->name('cart.page');
-Route::get('/remove-from-cart/{cart_id}', [CartController::class, 'removeFromCart'])->name('removefrom.cart');
+// Route::get('/remove-from-cart/{cart_id}', [CartController::class, 'removeFromCart'])->name('removefrom.cart');
 
 /* Coupon apply & remove */
 Route::post('cart/apply-coupon',[CartController::class,'couponApply'])->name('customer.couponapply');
@@ -74,10 +74,11 @@ Route::group(['middleware'=>isCustomer::class],function(){
     Route::prefix('customer')->group(function(){
         Route::get('dashboard',[FrontendController::class,'CustomerDasboard'])->name('customer.dashboard');
 
-        Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('add-to.cart');
+        // Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('add-to.cart');
         /*Checkout Page */
-        Route::get('checkout', [CheckoutController::class, 'checkoutPage'])->name('customer.checkoutpage');
-        Route::post('placeorder', [CheckoutController::class, 'placeOrder'])->name('customer.placeorder');
-
+        // Route::get('checkout', [CheckoutController::class, 'checkoutPage'])->name('customer.checkoutpage');
+        
     });
 });
+Route::post('placeorder', [CheckoutController::class, 'placeOrder'])->name('customer.placeorder');
+Route::get('checkout', [CheckoutController::class, 'checkoutPage'])->name('customer.checkoutpage');

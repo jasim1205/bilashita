@@ -10,11 +10,13 @@ use App\Models\Order;
 use App\Models\OrderDetails;
 use App\Models\StockEntry;
 use App\Models\Shippingcharge;
+use App\Models\CustomerAuth;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\DB;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\PlaceOrderRequest;
+use Illuminate\Support\Facades\Crypt;
 use Exception;
 
 class CheckoutController extends Controller
@@ -106,7 +108,7 @@ class CheckoutController extends Controller
 
         // die();
         // dd($request->all());
-        // DB::beginTransaction();
+        DB::beginTransaction();
         try {
             $billing = new Billing;
             $billing->name=$request->full_name;
@@ -117,55 +119,67 @@ class CheckoutController extends Controller
             $billing->address=$request->shipping_address;
             $billing->order_notes=$request->order_note;
             $billing->payment_method=$request->payment_method;
+            $billing->save();
             if($billing->save()){
-                $order=new Order;
-                $order->user_id=$request->session()->get('userId');
-                $order->billing_id=$billing->id;
-                $order->invoice_no="AB_".str_pad($billing->id,8,"0",STR_PAD_LEFT);
-                $order->sub_total=Session::get('coupon')['cart_total']??str_replace(",", "", Cart::subtotal());
-                $order->discount_amount=Session::get('coupon')['discount']?? 0;
-                $order->cupon_code=Session::get('coupon')['cupon_code']?? '';
-                $order->shipping_charge=$shippingcharge?? 0;
-                $order->total=$cuponbalance+$shippingcharge??str_replace(",", "", Cart::subtotal())+$shippingcharge;
-                $order->status=0;
-                if($order->save()){
-
-                    //Order details table data insert using cart_items helpers
-                    foreach(Cart::content() as $cart_item) {
-                        $orderdetails= new OrderDetails;
-                        $orderdetails->order_id=$order->id;
-                        $orderdetails->user_id=$request->session()->get('userId');
-                        $orderdetails->product_id=$cart_item->id;
-                        $orderdetails->product_qty=$cart_item->qty;
-                        $orderdetails->product_price=$cart_item->price;
-                        // StockEntry::findOrFail($cart_item->id)->decrement('qty', $cart_item->qty);
-                        // DB::table('db_stockentry')->findOrFail($cart_item->id)->decrement('qty', $cart_item->qty);
-                        if($orderdetails->save()){
-                            Cart::destroy();
-                            Session::forget('coupon');
-                            Session::forget('shipping');
-
-                            // Toastr::success('Your Order placed successfully!!!!','Success');
-                            return view('product.order-complete-message');
-                        }else{
-                            return back();
+                $customer = new CustomerAuth;
+                $customer->customer_name=$request->full_name;
+                $customer->mobile=$request->contact;
+                // $customer->address=$request->address;
+                // $customer->email=$request->email;
+                $customer->image='avater.jpg';
+                $customer->password=Crypt::encryptString($request->contact);
+                //dd($customer);
+                if($customer->save()){
+                    $order=new Order;
+                    $order->user_id=$customer->id;
+                    $order->billing_id=$billing->id;
+                    $order->invoice_no="AB_".str_pad($billing->id,8,"0",STR_PAD_LEFT);
+                    $order->sub_total=Session::get('coupon')['cart_total']??str_replace(",", "", Cart::subtotal());
+                    $order->discount_amount=Session::get('coupon')['discount']?? 0;
+                    $order->cupon_code=Session::get('coupon')['cupon_code']?? '';
+                    $order->shipping_charge=$shippingcharge?? 0;
+                    $order->total=$cuponbalance+$shippingcharge??str_replace(",", "", Cart::subtotal())+$shippingcharge;
+                    $order->status=0;
+                    //dd($order);
+                    if($order->save()){
+                        //Order details table data insert using cart_items helpers
+                        foreach(Cart::content() as $cart_item) {
+                            $orderdetails= new OrderDetails;
+                            $orderdetails->order_id=$order->id;
+                            // $orderdetails->user_id=$request->session()->get('userId');
+                            $orderdetails->user_id=$customer->id;
+                            $orderdetails->product_id=$cart_item->id;
+                            $orderdetails->product_qty=$cart_item->qty;
+                            $orderdetails->product_price=$cart_item->price;
+                            // StockEntry::findOrFail($cart_item->id)->decrement('qty', $cart_item->qty);
+                            // DB::table('db_stockentry')->findOrFail($cart_item->id)->decrement('qty', $cart_item->qty);
+                            if($orderdetails->save()){
+                                Cart::destroy();
+                                Session::forget('coupon');
+                                Session::forget('shipping');
+    
+                                
+                            }else{
+                                return back();
+                            }
                         }
+                         DB::commit();
+                       // Toastr::success('Your Order placed successfully!!!!','Success');
+                                return view('product.order-complete-message');
+                        
+                        //return redirect()->route('home');
+                        
+                    }else{
+                        return back();
                     }
-                    Cart::destroy();
-                    Session::forget('coupon');
-                    Session::forget('shipping');
-                    return redirect()->route('home');
-                    // DB::commit();
-                }else{
                     return back();
+                }else{
+                    return redirect()->back()->with('please try again');
                 }
-                return back();
-            }else{
-            return redirect()->back()->with('please try again');
             }
-
+           
         }catch(Exception $e){
-            // DB::rollback();
+            DB::rollback();
             dd($e);
         }
     }

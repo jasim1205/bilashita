@@ -69,7 +69,7 @@
             </div>
            
             <p class="p-short-specification">{!! html_entity_decode($show_product->description)!!} </p>
-            <form class="quentity d-flex my-4" action="{{ route('add-to.cart') }}" method="post">
+            <form class="quentity d-flex my-4" action="{{ route('add-to-cart') }}" method="post">
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $show_product->id }}">
                 <div id="sub">
@@ -79,7 +79,7 @@
                 <div id="add">
                 <i class="bi bi-plus"></i>
                 </div>
-                <input type="submit" value="Add To Cart" />
+                <input class="single-submit text-center" onclick="addToCard('{{$show_product->id }}')" value="Add To Cart" />
                 <div>
                 {{--  <i class="bi bi-heart-fill"></i>  --}}
                 </div>
@@ -244,12 +244,12 @@
                     <div class="card-body">
                         <p class="card-title text-center"> {{ $rproduct->item_name }} </p>
                         <p class="card-title text-center m-0 p-0">{{ $rproduct->web_price .' '.'TK' }}</p>
-                        <form class="" action="{{ route('add-to.cart') }}" method="post">
+                        <form class="" action="{{ route('add-to-cart') }}" method="post">
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $rproduct->id }}">
                             <input type="hidden" id="qtyBox" placeholder="1" value="1" name="order_qty" />
                             <div class="card-button">
-                                <input class="cartsubmit" type="submit" value="+Add To Cart" />
+                                <input class="single-cartsubmit"  onclick="addToCard('{{$show_product->id }}')"  value="+Add To Cart" />
                                 <a href="#"></a>
                                 {{--  <a href="{{ route('addwishlist',$p->id) }}"><i class="bi bi-heart-fill"></i></a>  --}}
                               </div>
@@ -284,4 +284,30 @@
     });
 </script>
 
+
 @endsection
+@push('scripts')
+<script>
+ const addToCard = (product_id) => {
+let totalCart = $("#totalCart").text();
+    const url = "{{ route('add-to-cart') }}";
+    const token = "{{ csrf_token() }}";
+    const data = {
+        _token: token,
+        product_id: product_id,
+        order_qty: 1
+    }
+     $.ajax({
+        url,
+        type: "POST",
+        data,
+        success: function(data){
+            if(data.status == true){
+                $("#totalCart").text(parseFloat(totalCart) +1);
+            }
+  }
+    });
+ }
+
+</script>
+@endpush
