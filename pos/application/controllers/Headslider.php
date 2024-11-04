@@ -69,6 +69,7 @@ class Headslider extends MY_Controller {
 			$row[] = $slider->short_description;
 			$row[] = $slider->link;
 			$row[] = "<img src='".base_url('uploads/slider_image/').$slider->slider_image."' width='80px'>";
+			$row[] = $slider->order_by;
 
 					$str2 = '<div class="btn-group" title="View Account">
 										<a class="btn btn-primary btn-o dropdown-toggle" data-toggle="dropdown" href="#">

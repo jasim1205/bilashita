@@ -55,6 +55,7 @@
                   <th><?= $this->lang->line('short_description'); ?></th>
                   <th><?= $this->lang->line('link'); ?></th>
                   <th><?= $this->lang->line('slider_image'); ?></th>
+                  <th><?= $this->lang->line('order_by'); ?></th>
                   <th><?= $this->lang->line('action'); ?></th>
                 </tr>
                 </thead>

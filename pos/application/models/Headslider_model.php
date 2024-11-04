@@ -4,9 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Headslider_model extends CI_Model {
 
 	var $table = 'header_sliders';
-	var $column_order = array(null, 'title','link','short_description','slider_image'); //set column field database for datatable orderable
-	var $column_search = array('title','link','short_description','slider_image'); //set column field database for datatable searchable
-	var $order = array('id' => 'desc'); // default order
+	var $column_order = array(null, 'title','link','short_description','slider_image','order_by'); //set column field database for datatable orderable
+	var $column_search = array('title','link','short_description','slider_image','order_by'); //set column field database for datatable searchable
+	var $order = array('id' => 'asc'); // default order
 
 	private function _get_datatables_query()
 	{
@@ -109,8 +109,8 @@ class Headslider_model extends CI_Model {
         }
 
 
-        $query1="insert into header_sliders(slider_image,title,short_description,link)
-                            values('$file_name','$title','$short_description','$link')";
+        $query1="insert into header_sliders(slider_image,title,short_description,link,order_by)
+                            values('$file_name','$title','$short_description','$link','$order_by')";
         if ($this->db->simple_query($query1)){
                 $this->session->set_flashdata('success', 'Success!! New Header Sliders Added Successfully!');
                 return "success";

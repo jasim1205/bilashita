@@ -34,83 +34,92 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="row">
-        <!-- right column -->
-        <?= form_open('#', array('class' => 'form', 'id' => 'category-form', 'enctype'=>'multipart/form-data', 'method'=>'POST'));?>
+        <div class="row">
+          <!-- right column -->
+          <?= form_open('#', array('class' => 'form', 'id' => 'category-form', 'enctype'=>'multipart/form-data', 'method'=>'POST'));?>
                 <input type="hidden" id="base_url" value="<?php echo $base_url; ?>">
-                <div class="form-group">
-                    <label for="image" class="col-sm-2 control-label"><?= $this->lang->line('slider_image'); ?></label>
-                    <div class="col-sm-4">
-                        <input type="file" class="form-control" name="slider_image">
-                        <span id="slider_image_msg" style="display:block;" class="text-danger">Max Width/Height: 1290px * 400px & Size: 1MB </span>
-                        <?php if($slider_image){ ?>
-                            <a href="<?= base_url($slider_image) ?>" target="_blank">
-                                <img src="<?= base_url($slider_image) ?>" alt="" width="50px">
-                            </a>
-                        <?php } ?>
+                  <div class="form-group">
+                      <label for="image" class="col-sm-2 control-label"><?= $this->lang->line('slider_image'); ?></label>
+                      <div class="col-sm-4">
+                          <input type="file" class="form-control" name="slider_image">
+                          <span id="slider_image_msg" style="display:block;" class="text-danger">
+                                Max Width/Height: 600px * 400px & Size: 300kB 
+                          </span>
+                          <?php if($slider_image){ ?>
+                              <a href="<?= base_url($slider_image) ?>" target="_blank">
+                                  <img src="<?= base_url($slider_image) ?>" alt="" width="50px">
+                              </a>
+                          <?php } ?>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="title" class="col-sm-2 control-label"><?= $this->lang->line('title'); ?></label>
+                      <div class="col-sm-4">
+                          <input type="text" class="form-control" value="<?php print $title; ?>" id="title" name="title" placeholder="">
+                          <span id="title_msg" style="display:none" class="text-danger"></span>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                        <label for="link" class="col-sm-2 control-label"><?= $this->lang->line('link'); ?></label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" value="<?php print $link; ?>" id="link" name="link" placeholder="">
+                            <span id="link_msg" style="display:none" class="text-danger"></span>
+                        </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="short_description" class="col-sm-2 control-label"><?= $this->lang->line('short_description'); ?></label>
+                      <div class="col-sm-4">
+                          <textarea type="text" class="form-control" id="short_description" name="short_description" placeholder=""><?php print $short_description; ?></textarea>
+                            <span id="short_description_msg" style="display:none" class="text-danger"></span>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="order_by" class="col-sm-2 control-label"><?= $this->lang->line('order_by'); ?></label>
+                      <div class="col-sm-4">
+                          <input type="text" class="form-control" value="" id="order_by" name="order_by" placeholder="">
+                            <span id="order_by_msg" style="display:none" class="text-danger"></span>
+                      </div>
+                  </div>
+
+                </div>
+                <!-- /.box-footer -->
+                <div class="box-footer">
+                  <div class="col-sm-8 col-sm-offset-2 text-center">
+                    <!-- <div class="col-sm-4"></div> -->
+                    <?php
+                        if($title!=""){
+                            $btn_name="Update";
+                            $btn_id="update";
+                            ?>
+                              <input type="hidden" name="q_id" id="q_id" value="<?php echo $q_id;?>"/>
+                              <?php
+                        }
+                                  else{
+                                      $btn_name="Save";
+                                      $btn_id="save";
+                                  }
+
+                                  ?>
+
+                    <div class="col-md-3 col-md-offset-3">
+                        <button type="button" id="<?php echo $btn_id;?>" class=" btn btn-block btn-success" title="Save Data"><?php echo $btn_name;?></button>
                     </div>
-                </div>
-
-				<div class="form-group">
-                  <label for="title" class="col-sm-2 control-label"><?= $this->lang->line('title'); ?></label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" value="<?php print $title; ?>" id="title" name="title" placeholder="">
-					<span id="title_msg" style="display:none" class="text-danger"></span>
+                    <div class="col-sm-3">
+                      <a href="<?=base_url('dashboard');?>">
+                        <button type="button" class="col-sm-3 btn btn-block btn-warning close_btn" title="Go Dashboard">Close</button>
+                      </a>
+                    </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label for="link" class="col-sm-2 control-label"><?= $this->lang->line('link'); ?></label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" value="<?php print $link; ?>" id="link" name="link" placeholder="">
-					<span id="link_msg" style="display:none" class="text-danger"></span>
-                  </div>
-                </div>
-				<div class="form-group">
-                  <label for="short_description" class="col-sm-2 control-label"><?= $this->lang->line('short_description'); ?></label>
-                  <div class="col-sm-4">
-                    <textarea type="text" class="form-control" id="short_description" name="short_description" placeholder=""><?php print $short_description; ?></textarea>
-					<span id="short_description_msg" style="display:none" class="text-danger"></span>
-                  </div>
-                </div>
-
               </div>
               <!-- /.box-footer -->
-              <div class="box-footer">
-                <div class="col-sm-8 col-sm-offset-2 text-center">
-                   <!-- <div class="col-sm-4"></div> -->
-                   <?php
-                      if($title!=""){
-                           $btn_name="Update";
-                           $btn_id="update";
-                          ?>
-                            <input type="hidden" name="q_id" id="q_id" value="<?php echo $q_id;?>"/>
-                            <?php
-                      }
-                                else{
-                                    $btn_name="Save";
-                                    $btn_id="save";
-                                }
+              </form>
+            </div>
+            <!-- /.box -->
 
-                                ?>
-
-                   <div class="col-md-3 col-md-offset-3">
-                      <button type="button" id="<?php echo $btn_id;?>" class=" btn btn-block btn-success" title="Save Data"><?php echo $btn_name;?></button>
-                   </div>
-                   <div class="col-sm-3">
-                    <a href="<?=base_url('dashboard');?>">
-                      <button type="button" class="col-sm-3 btn btn-block btn-warning close_btn" title="Go Dashboard">Close</button>
-                    </a>
-                   </div>
-                </div>
-             </div>
-             <!-- /.box-footer -->
-            </form>
           </div>
-          <!-- /.box -->
-
+          <!--/.col (right) -->
         </div>
-        <!--/.col (right) -->
-      </div>
       <!-- /.row -->
 
     </section>

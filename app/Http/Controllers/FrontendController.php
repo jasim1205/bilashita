@@ -33,7 +33,14 @@ class FrontendController extends Controller
         $popular_products = DB::table('db_items')->where('is_feature', '1')->select('id', 'item_name', 'sales_price', 'web_price', 'item_image', 'is_feature')->limit(16)->inRandomOrder()->orderBy('item_name')->where('web_price','>',0)->get();
         $top_products  = DB::table('db_items')->where('is_latest', '1')->select('id', 'item_name', 'sales_price', 'web_price', 'item_image', 'is_top')->limit(16)->inRandomOrder()->orderBy('item_name')->where('web_price','>',0)->get();
         $offer_products = DB::table('db_items')->where('is_top', '1')->select('id', 'item_name', 'sales_price', 'web_price', 'item_image', 'is_top')->limit(16)->inRandomOrder()->orderBy('item_name')->where('web_price','>',0)->get();
-        return view('home', compact('faq', 'slide', 'footslider', 'popular_products', 'offer_products', 'top_products', 'frontsettt'));
+
+        $heroone = DB::table('header_sliders')->where('order_by', '1')->select('id', 'title', 'short_description', 'slider_image', 'link', 'order_by')->first();
+        $herotwo = DB::table('header_sliders')->where('order_by', '2')->select('id', 'title', 'short_description', 'slider_image', 'link', 'order_by')->first();
+        $herothree = DB::table('header_sliders')->where('order_by', '3')->select('id', 'title', 'short_description', 'slider_image', 'link', 'order_by')->first();
+        $herofour = DB::table('header_sliders')->where('order_by', '4')->select('id', 'title', 'short_description', 'slider_image', 'link', 'order_by')->first();
+        $herofive = DB::table('header_sliders')->where('order_by', '5')->select('id', 'title', 'short_description', 'slider_image', 'link', 'order_by')->first();
+
+        return view('home', compact('faq', 'slide', 'footslider', 'popular_products', 'offer_products', 'top_products', 'frontsettt','heroone','herotwo','herothree','herofour','herofive'));
     }
     public function Search(Request $request)
     {

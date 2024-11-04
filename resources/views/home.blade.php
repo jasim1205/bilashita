@@ -16,15 +16,19 @@
             </div>
             <div class="col-md-9"> --}}
                 <div class="row">
-                    <div class="col-md-7">
-                        <img src="{{ asset('assets/images/slider-1.png') }}" alt="slider-1" class="img-fluid">
+                    <div class="col-md-7 mt-4">
+                        <img src="{{ asset('./../pos/uploads/slider_image/'.$heroone->slider_image) }}" alt="slider-1" class="img-fluid rounded" style="height: 300px">
+                        {{-- <img src="{{ asset('assets/images/slider-1.png') }}" alt="slider-1" class="img-fluid"> --}}
                     </div>
-                    <div class="col-md-5 hero-img-group ">
+                    <div class="col-md-5 hero-img-group mt-4">
                         <!-- <div class="row"> -->
+                        <img class="hero-img rounded" src="{{ asset('./../pos/uploads/slider_image/'.$herotwo->slider_image) }}" alt="card-img-1" style="height: 150px;">
+                        <img class="hero-img rounded " src="{{ asset('./../pos/uploads/slider_image/'.$herothree->slider_image) }}" alt="card-img-1" style="height: 150px">
+                        <img class="hero-img rounded" src="{{ asset('./../pos/uploads/slider_image/'.$herofour->slider_image) }}" alt="card-img-1" style="height: 150px">
+                        <img class="hero-img rounded" src="{{ asset('./../pos/uploads/slider_image/'.$herofive?->slider_image) }}" alt="card-img-1" style="height: 150px">
+                        {{-- <img class="hero-img" src="{{ asset('assets/images/card-items-1.png') }}" alt="card-img-1">
                         <img class="hero-img" src="{{ asset('assets/images/card-items-1.png') }}" alt="card-img-1">
-                        <img class="hero-img" src="{{ asset('assets/images/card-items-1.png') }}" alt="card-img-1">
-                        <img class="hero-img" src="{{ asset('assets/images/card-items-1.png') }}" alt="card-img-1">
-                        <img class="hero-img" src="{{ asset('assets/images/card-items-1.png') }}" alt="card-img-1">
+                        <img class="hero-img" src="{{ asset('assets/images/card-items-1.png') }}" alt="card-img-1"> --}}
                         <!-- </div> -->
                     </div>
                 </div>

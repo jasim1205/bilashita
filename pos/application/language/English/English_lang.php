@@ -558,6 +558,7 @@ $lang['Headslider']	                        =		'Headslider';
 $lang['headslider_list']	                =       'Headslider List';
 $lang['slider_image']	                    =		'Slider Image';
 $lang['title']	                            =		'Slider Title';
+$lang['order_by']	                        =		'Order By'; 
 $lang['front settings']	                    =		'Front settings';
 $lang['headslide_add']	                    =		'Head slide add';
 $lang['short_description']	                =		'Short Description';
