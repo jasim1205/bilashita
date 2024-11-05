@@ -13,9 +13,31 @@
  <?php include"sidebar.php"; ?>
  <?php
 	if(!isset($title)){
-      $slider_image=$title=$short_description=$link="";
+      $slider_image=$title=$short_description=$link=$order_by="";
 	}
  ?>
+
+ <?php
+  $slider_image_msg = "Default message for the slider image requirements"; // Default message
+
+  if (isset($order_by)) {
+      if ($order_by==1) {
+          $slider_image_msg = "Max Width/Height: 650px * 300px & Size: 300kB";
+      } 
+      elseif ($order_by == 2) {
+          $slider_image_msg = "Max Width/Height: 222px * 150px & Size: 200kB";
+      } 
+      elseif ($order_by == 3) {
+          $slider_image_msg = "Max Width/Height: 222px * 150px & Size: 200kB";
+      } 
+      elseif ($order_by == 4) {
+        $slider_image_msg = "Max Width/Height: 222px * 150px & Size: 200kB";
+      }
+      else {
+          $slider_image_msg = "Max Width/Height: 222px * 150px & Size: 200kB"; // Customize if needed
+      }
+  }
+?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -42,8 +64,10 @@
                       <label for="image" class="col-sm-2 control-label"><?= $this->lang->line('slider_image'); ?></label>
                       <div class="col-sm-4">
                           <input type="file" class="form-control" name="slider_image">
+                          
                           <span id="slider_image_msg" style="display:block;" class="text-danger">
-                                Max Width/Height: 600px * 400px & Size: 300kB 
+                            <?= $slider_image_msg; ?>
+                              <!-- Max Width/Height: 600px * 400px & Size: 300kB -->
                           </span>
                           <?php if($slider_image){ ?>
                               <a href="<?= base_url($slider_image) ?>" target="_blank">
@@ -74,13 +98,13 @@
                             <span id="short_description_msg" style="display:none" class="text-danger"></span>
                       </div>
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                       <label for="order_by" class="col-sm-2 control-label"><?= $this->lang->line('order_by'); ?></label>
                       <div class="col-sm-4">
-                          <input type="text" class="form-control" value="" id="order_by" name="order_by" placeholder="">
+                          <input type="text" class="form-control" value="<?php print $order_by; ?>" id="order_by" name="order_by" placeholder="">
                             <span id="order_by_msg" style="display:none" class="text-danger"></span>
                       </div>
-                  </div>
+                  </div> -->
 
                 </div>
                 <!-- /.box-footer -->
@@ -127,6 +151,7 @@
   </div>
   <!-- /.content-wrapper -->
 
+  
  <?php include"footer.php"; ?>
 
 

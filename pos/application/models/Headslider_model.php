@@ -135,6 +135,7 @@ class Headslider_model extends CI_Model {
 			$data['title']=$query->title;
 			$data['short_description']=$query->short_description;
 			$data['link']=$query->link;
+			$data['order_by']=$query->order_by;
 			return $data;
 		}
 	}

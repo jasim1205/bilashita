@@ -69,7 +69,17 @@ class Headslider extends MY_Controller {
 			$row[] = $slider->short_description;
 			$row[] = $slider->link;
 			$row[] = "<img src='".base_url('uploads/slider_image/').$slider->slider_image."' width='80px'>";
-			$row[] = $slider->order_by;
+			if ($slider->order_by == 1) {
+				$row[] = 'Image Banner-1';
+			} else if ($slider->order_by == 2) {
+				$row[] = 'Image Banner-2';
+			} else if ($slider->order_by == 3) {
+				$row[] = 'Other Banner-3';
+			}else if ($slider->order_by == 4) {
+				$row[] = 'Other Banner-4';
+			}else if ($slider->order_by == 5) {
+				$row[] = 'Other Banner-5';
+			}
 
 					$str2 = '<div class="btn-group" title="View Account">
 										<a class="btn btn-primary btn-o dropdown-toggle" data-toggle="dropdown" href="#">
