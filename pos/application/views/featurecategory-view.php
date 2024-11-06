@@ -19,7 +19,7 @@
     <section class="content-header">
       <h1>
         <?=$page_title;?>
-        <small>View/Search Gallery Image</small>
+        <small>View/Search Feature Category Image</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -41,8 +41,8 @@
               <h3 class="box-title"><?=$page_title;?></h3>
               <?php if($CI->permissions('items_category_add')) { ?>
               <div class="box-tools">
-                <a class="btn btn-block btn-info" href="<?php echo $base_url; ?>homegallery/add">
-                <i class="fa fa-plus"></i> <?= $this->lang->line('GalleryImage'); ?></a> 
+                <a class="btn btn-block btn-info" href="<?php echo $base_url; ?>featurecategory/add">
+                <i class="fa fa-plus"></i> <?= $this->lang->line('FeatureCategory'); ?></a> 
               </div>
               <?php } ?>
             </div>
@@ -52,7 +52,6 @@
                 <thead class="bg-primary ">
                 <tr>
                   <th><?= $this->lang->line('title'); ?></th>
-                  <th><?= $this->lang->line('short_description'); ?></th>
                   <th><?= $this->lang->line('link'); ?></th>
                   <th><?= $this->lang->line('image'); ?></th>
                   <th><?= $this->lang->line('action'); ?></th>
@@ -125,7 +124,7 @@ $(document).ready(function() {
         },
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": "<?php echo site_url('HomeGallery/ajax_list')?>",
+            "url": "<?php echo site_url('FeatureCategory/ajax_list')?>",
             "type": "POST",
 
             complete: function (data) {
@@ -157,7 +156,7 @@ $(document).ready(function() {
     new $.fn.dataTable.FixedHeader( table );
 });
 </script>
-<script src="<?php echo $theme_link; ?>js/gallery.js"></script>
+<script src="<?php echo $theme_link; ?>js/feature.js"></script>
 <!-- Make sidebar menu hughlighter/selector -->
 <script>$(".<?php echo basename(__FILE__,'.php');?>-active-li").addClass("active");</script>
 </body>

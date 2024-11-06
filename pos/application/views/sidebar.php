@@ -605,6 +605,9 @@
             <li class="items-list-active-li"><a href="<?php echo $base_url; ?>homegallery/view"><i class="fa fa-list "></i> <span><?= $this->lang->line('GalleryImage'); ?></span></a></li>
             <?php } ?>
             <?php if($CI->permissions('items_view')) { ?>
+            <li class="items-list-active-li"><a href="<?php echo $base_url; ?>featurecategory/view"><i class="fa fa-list "></i> <span><?= $this->lang->line('FeatureCategory'); ?></span></a></li>
+            <?php } ?>
+            <?php if($CI->permissions('items_view')) { ?>
             <li class="items-list-active-li"><a href="<?php echo $base_url; ?>footslider/view"><i class="fa fa-list "></i> <span><?= $this->lang->line('footslider'); ?></span></a></li>
             <?php } ?>
             <?php if($CI->permissions('items_view')) { ?>

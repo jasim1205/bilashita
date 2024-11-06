@@ -557,9 +557,11 @@ $lang['accounts']	                        =		'Accounts';
 $lang['transactions']	                    =		'Transactions';
 $lang['Headslider']	                        =		'Headslider';
 $lang['GalleryImage']	                    =		'GalleryImage';
+$lang['FeatureCategory']	                =		'Feature Category';
 
 $lang['headslider_list']	                =       'Headslider List';
 $lang['slider_image']	                    =		'Slider Image';
+$lang['order_by']	                        =		'Order By';
 $lang['title']	                            =		'Slider Title';
 $lang['front settings']	                    =		'Front settings';
 $lang['headslide_add']	                    =		'Head slide add';
