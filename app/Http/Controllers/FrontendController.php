@@ -40,6 +40,9 @@ class FrontendController extends Controller
         $herofour = DB::table('header_sliders')->where('order_by', '4')->select('id', 'title', 'short_description', 'slider_image', 'link', 'order_by')->first();
         $herofive = DB::table('header_sliders')->where('order_by', '5')->select('id', 'title', 'short_description', 'slider_image', 'link', 'order_by')->first();
 
+        // $footslider = DB::table('footer_sliders')->select('id', 'title', 'short_description', 'fslider_image', 'link')->take(2)->get();
+        // $footslidertwo = DB::table('footer_sliders')->select('id', 'title', 'short_description', 'fslider_image', 'link')->take(2)->orderBy('id','desc')->get();
+
         return view('home', compact('faq', 'slide', 'footslider', 'popular_products', 'offer_products', 'top_products', 'frontsettt','heroone','herotwo','herothree','herofour','herofive'));
     }
     public function Search(Request $request)

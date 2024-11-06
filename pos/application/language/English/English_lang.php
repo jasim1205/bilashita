@@ -556,6 +556,7 @@ $lang['stock_list']	                        =		'Stock List';
 $lang['accounts']	                        =		'Accounts';
 $lang['transactions']	                    =		'Transactions';
 $lang['Headslider']	                        =		'Headslider';
+$lang['GalleryImage']	                    =		'GalleryImage';
 
 $lang['headslider_list']	                =       'Headslider List';
 $lang['slider_image']	                    =		'Slider Image';

@@ -602,6 +602,9 @@
             <li class="items-list-active-li"><a href="<?php echo $base_url; ?>headslider/view"><i class="fa fa-list "></i> <span><?= $this->lang->line('Headslider'); ?></span></a></li>
             <?php } ?>
             <?php if($CI->permissions('items_view')) { ?>
+            <li class="items-list-active-li"><a href="<?php echo $base_url; ?>homegallery/view"><i class="fa fa-list "></i> <span><?= $this->lang->line('GalleryImage'); ?></span></a></li>
+            <?php } ?>
+            <?php if($CI->permissions('items_view')) { ?>
             <li class="items-list-active-li"><a href="<?php echo $base_url; ?>footslider/view"><i class="fa fa-list "></i> <span><?= $this->lang->line('footslider'); ?></span></a></li>
             <?php } ?>
             <?php if($CI->permissions('items_view')) { ?>

@@ -169,10 +169,32 @@
                             reliability, we ensure optimal performance and longevity for motors of all types. Trust us
                         </p>
                     </div>
+                    @php
+                         $footslider = DB::table('footer_sliders')->select('id', 'title', 'short_description', 'fslider_image', 'link')->take(2)->get();
+                    @endphp
                     <div class="col-md mb-4 mb-md-0">
                         <h3>Regular Product</h3>
                         <div class="row gallery">
-                            <div class="product-card">
+                            @foreach($footslider as $item)
+                            <div class="">
+                                <a href="#">
+                                    <img src="{{ asset('./../pos/uploads/fslider_image/'.$item?->fslider_image) }}" alt="categories-1" class="rounded" style="height: 100px;">
+                                </a>
+                                {{-- <img src="{{asset('assets/images/product-1.png')}}" alt="categories-1" width="100px"> --}}
+                                {{-- <div class="card-body">
+                                    <h5 class="card-title">Airphone 6</h5>
+                                    <p>
+                                        <span class="current-price">3000.00</span>
+                                        <span class="regular-price"><strike>3000.00</strike></span>
+                                    </p>
+                                    <p class="price">Price</p>
+                                </div> --}}
+                                {{-- <button type="button" class="btn btn-light">
+                                    <i class="fa-solid fa-basket-shopping"></i>
+                                    Buy Now
+                                </button> --}}
+                            </div>
+                            {{-- <div class="product-card">
                                 <img src="assets/images/product-1.png" alt="categories-1" width="100px">
                                 <div class="card-body">
                                     <h5 class="card-title">Airphone 6</h5>
@@ -186,28 +208,36 @@
                                     <i class="fa-solid fa-basket-shopping"></i>
                                     Buy Now
                                 </button>
-                            </div>
-                            <div class="product-card">
-                                <img src="assets/images/product-1.png" alt="categories-1" width="100px">
-                                <div class="card-body">
-                                    <h5 class="card-title">Airphone 6</h5>
-                                    <p>
-                                        <span class="current-price">3000.00</span>
-                                        <span class="regular-price"><strike>3000.00</strike></span>
-                                    </p>
-                                    <p class="price">Price</p>
-                                </div>
-                                <button type="button" class="btn btn-light">
-                                    <i class="fa-solid fa-basket-shopping"></i>
-                                    Buy Now
-                                </button>
-                            </div>
+                            </div> --}}
+                            @endforeach
                         </div>
                     </div>
+                    @php
+                        $footslidertwo = DB::table('footer_sliders')->select('id', 'title', 'short_description', 'fslider_image', 'link')->take(2)->orderBy('id','desc')->get();
+                    @endphp
                     <div class="col-md-3 mb-4 mb-md-0">
-                        <h3>Recent Order</h3>
+                        <h3>Recent Product</h3>
                         <div class="row gallery">
-                            <div class="product-card">
+                            @foreach($footslidertwo as $item)
+                            <div class="">
+                                <a href="#">
+                                    <img src="{{ asset('./../pos/uploads/fslider_image/'.$item?->fslider_image) }}" alt="categories-1" class="rounded" style="height: 100px;">
+                                </a>
+                                {{-- <img src="assets/images/product-1.png" alt="categories-1" width="100px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Airphone 6</h5>
+                                    <p>
+                                        <span class="current-price">3000.00</span>
+                                        <span class="regular-price"><strike>3000.00</strike></span>
+                                    </p>
+                                    <p class="price">Price</p>
+                                </div>
+                                <button type="button" class="btn btn-light">
+                                    <i class="fa-solid fa-basket-shopping"></i>
+                                    Buy Now
+                                </button> --}}
+                            </div>
+                            {{-- <div class="product-card">
                                 <img src="assets/images/product-1.png" alt="categories-1" width="100px">
                                 <div class="card-body">
                                     <h5 class="card-title">Airphone 6</h5>
@@ -221,22 +251,8 @@
                                     <i class="fa-solid fa-basket-shopping"></i>
                                     Buy Now
                                 </button>
-                            </div>
-                            <div class="product-card">
-                                <img src="assets/images/product-1.png" alt="categories-1" width="100px">
-                                <div class="card-body">
-                                    <h5 class="card-title">Airphone 6</h5>
-                                    <p>
-                                        <span class="current-price">3000.00</span>
-                                        <span class="regular-price"><strike>3000.00</strike></span>
-                                    </p>
-                                    <p class="price">Price</p>
-                                </div>
-                                <button type="button" class="btn btn-light">
-                                    <i class="fa-solid fa-basket-shopping"></i>
-                                    Buy Now
-                                </button>
-                            </div>
+                            </div> --}}
+                            @endforeach
                         </div>
                     </div>
                     <div class="col-12">
