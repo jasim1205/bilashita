@@ -371,6 +371,19 @@
                                     <option <?= $yes_selected ?> value="1">Yes</option>
                                  </select>
                               </div>
+  				            <div class="form-group col-md-4">
+                                 <label for="slied" class="control-label">Is Front<span class="text-danger"></label>
+                                 <select class="form-control" name="is_front" id="is_front" value="<?php print $is_front; ?>">
+                                 <?php
+                                    $yes_selected=$no_selected='';
+                                    if($is_front =='1') { $yes_selected='selected'; }
+                                    if($is_front =='0') { $no_selected='selected'; }
+
+                                  ?>
+                                    <option <?= $no_selected ?> value="0">No</option>
+                                    <option <?= $yes_selected ?> value="1">Yes</option>
+                                 </select>
+                              </div>
                            </div>
                            <div class="form-group col-md-4">
                                  <!-- <label for="tax_id" ><?= $this->lang->line('tax'); ?><span class="text-danger">*</span></label> -->

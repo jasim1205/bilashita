@@ -298,12 +298,12 @@ class Items_model extends CI_Model {
 
 		$query1="insert into db_items(description,item_code,item_name,brand_id,category_id,subcategory_id,childcategory_id,sku,hsn,unit_id,alert_qty,lot_number,expire_date,
 									old_price,price,tax_id,purchase_price,tax_type,profit_margin,web_price,
-									sales_price,custom_barcode,final_price,wholesale_price,weight,is_feature,is_latest,is_top,is_review,short_description,long_description,
+									sales_price,custom_barcode,final_price,wholesale_price,weight,is_feature,is_latest,is_top,is_review,is_front,short_description,long_description,
 									system_ip,system_name,created_date,created_time,created_by,status)
 
 							values('$description','$item_code','$item_name','$brand_id','$category_id','$subcategory_id','$childcategory_id','$sku','$hsn','$unit_id','$alert_qty','$lot_number','$expire_date',
 									'$old_price','$price','$tax_id','$purchase_price','$tax_type',$profit_margin,'$web_price',
-									'$sales_price','$custom_barcode','$final_price','$wholesale_price','$weight','$is_feature','$is_latest','$is_top','$is_review','$short_description','$long_description',
+									'$sales_price','$custom_barcode','$final_price','$wholesale_price','$weight','$is_feature','$is_latest','$is_top','$is_review','$is_front','$short_description','$long_description',
 									'$SYSTEM_IP','$SYSTEM_NAME','$CUR_DATE','$CUR_TIME','$CUR_USERNAME',1)";
 
 		$query1=$this->db->simple_query($query1);
@@ -383,6 +383,7 @@ class Items_model extends CI_Model {
 			$data['is_latest']=$query->is_latest;
 			$data['is_top']=$query->is_top;
 			$data['is_review']=$query->is_review;
+			$data['is_front']=$query->is_front;
 			$data['short_description']=$query->short_description;
 			$data['long_description']=$query->long_description;
 			$data['stock']=$query->stock;
@@ -399,6 +400,7 @@ class Items_model extends CI_Model {
 		}
 	}
 	public function update_items(){
+	  
 		//Filtering XSS and html escape from user inputs
 		extract($this->security->xss_clean(html_escape(array_merge($this->data,$_POST))));
 
@@ -632,6 +634,7 @@ class Items_model extends CI_Model {
 						long_description='$long_description',
 						short_description='$short_description',
 						is_review='$is_review',
+						is_front='$is_front',
 						is_top='$is_top',
 						is_latest='$is_latest',
 						is_feature='$is_feature',

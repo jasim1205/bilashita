@@ -71,7 +71,10 @@ class Sales extends MY_Controller {
 
 	public function ajax_list()
 	{
-		$list = $this->sales->get_datatables(@$_GET['customerId']);
+
+
+		$list = $this->sales->get_datatables(@$_GET['customerId'], @$_POST['warehouse_id']);
+
 
         $data = array();
 		$no = $_POST['start'];
@@ -88,10 +91,10 @@ class Sales extends MY_Controller {
             $row[] =  '';
             $row[] = '';
             $row[] = '';
-            $row[] = '';
-            $row[] = '';
-            $row[] = '';
             $row[] = 'Opening Balance';
+            $row[] = '';
+            $row[] = '';
+            $row[] = '';
             $row[] = app_number_format($customer_openint);
             $row[] = '';
             $row[] = '';
@@ -107,7 +110,7 @@ class Sales extends MY_Controller {
 			$row[] = '<input type="checkbox" name="checkbox[]" value='.$sales->id.' class="checkbox column_checkbox" >';
 			$row[] = show_date($sales->sales_date);
 
-			// $info = (!empty($sales->return_bit)) ? "\n<span class='label label-danger' style='cursor:pointer'><i class='fa fa-fw fa-undo'></i>Return Raised</span>" : '';
+			$info = (!empty($sales->return_bit)) ? "\n<span class='label label-danger' style='cursor:pointer'><i class='fa fa-fw fa-undo'></i>Return Raised</span>" : '';
 
 			// $row[] = $sales->sales_code.$info;
 			$row[] = $sales->sales_code;
@@ -117,15 +120,20 @@ class Sales extends MY_Controller {
 			$row[] = $sales->warehouse_name;
 			$row[] = app_number_format($sales->grand_total);
 			$row[] = app_number_format($sales->paid_amount);
-			$row[] = app_number_format($sales->sales_due);
+			$row[] = $sales->return_bit?0:app_number_format($sales->sales_due);//Here We have add change becasuse of return not showing due this is changed line actual line commented below
+			//$row[] = app_number_format($sales->sales_due);
 					$str='';
-					if($sales->payment_status=='Unpaid')
-			          $str= "<span class='label label-danger' style='cursor:pointer'>Unpaid </span>";
-			        if($sales->payment_status=='Partial')
-			          $str="<span class='label label-warning' style='cursor:pointer'> Partial </span>";
-			        if($sales->payment_status=='Paid')
-			          $str="<span class='label label-success' style='cursor:pointer'> Paid </span>";
-
+					if($sales->return_bit)
+					    $str= "<span class='label label-warning' style='cursor:pointer'>Return </span>";
+					    else{
+				        	if($sales->payment_status=='Unpaid')
+        			          $str= "<span class='label label-danger' style='cursor:pointer'>Unpaid </span>";
+        			        if($sales->payment_status=='Partial')
+        			          $str="<span class='label label-warning' style='cursor:pointer'> Partial </span>";
+        			        if($sales->payment_status=='Paid')
+        			          $str="<span class='label label-success' style='cursor:pointer'> Paid </span>";
+					    }
+				
 			$row[] = $str;
 			$row[] = ucfirst($sales->created_by);
 

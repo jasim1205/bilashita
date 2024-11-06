@@ -630,7 +630,7 @@
                  data: [
                  <?php 
             //PIE CHART
-            $q3=$this->db->query("SELECT COALESCE(SUM(b.sales_qty),0) AS sales_qty, a.item_name FROM db_items AS a, db_salesitems AS b ,db_sales AS c WHERE a.id=b.`item_id` AND b.sales_id=c.`id` AND c.`sales_status`='Final' GROUP BY a.id limit 10");
+            $q3=$this->db->query("SELECT COALESCE(SUM(b.sales_qty),0) AS sales_qty, a.item_name FROM db_items AS a, db_salesitems AS b ,db_sales AS c WHERE a.id=b.`item_id` AND b.sales_id=c.`id` AND c.`sales_status`='Final' GROUP BY a.id  ORDER by sales_qty desc limit 10");
             if($q3->num_rows() >0){
               foreach($q3->result() as $res3){
                   //extract($res3);

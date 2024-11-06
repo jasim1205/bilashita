@@ -28,6 +28,16 @@ class Reports extends MY_Controller {
 	public function show_salesman_report(){
 		echo $this->reports->show_salesman_report();
 	}
+	
+	public function due(){
+		$this->permission_check('salesman_report');
+		$data=$this->data;
+		$data['page_title']=$this->lang->line('due_report');
+		$this->load->view('report-due', $data);
+	}
+	public function show_due_report(){
+		echo $this->reports->show_due_report();
+	}
 
 	//Sales Return Report
 	public function sales_return(){

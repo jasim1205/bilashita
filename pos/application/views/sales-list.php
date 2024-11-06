@@ -127,6 +127,30 @@
               </div>
               <?php } ?>
             </div>
+            <div class="col-md-4" style="margin-bottom:10px">
+                <label for="warehouse_id"><?= $this->lang->line('warehouse'); ?><span class="text-danger">*</span></label> 
+                <select class="form-control select2" id="warehouse_id" name="warehouse_id"  style="width: 100%;" onkeyup="shift_cursor(event,'mobile')">
+                              <?php
+                                  $query1 ="select * from db_warehouse where status=1";
+                                  $q1=$this->db->query($query1);
+                                  if($q1->num_rows($q1)>0)
+                                    { 
+                                        echo "<option value=''>-Select Warehouse-</option>";
+                                        foreach($q1->result() as $res1)
+                                    {
+                                        
+                                        echo "<option $selected  value='".$res1->id."'>".$res1->warehouse_name ."</option>";
+                                    }
+                                    }
+                                    else
+                                    {
+                                        ?>
+                              <option value="">No Records Found</option>
+                              <?php
+                                  }
+                                  ?>
+                            </select>
+            </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example2" class="table table-bordered table-striped" width="100%">
@@ -237,6 +261,9 @@ $(document).ready(function() {
         "ajax": {
             "url": "<?php echo site_url('sales/ajax_list').'?customerId='.$customerId?>",
             "type": "POST",
+            "data": function (d) {
+                d.warehouse_id = $('#warehouse_id').val(); // Add warehouse_id to the data being sent to the server
+            },
             complete: function (data) {
              $('.column_checkbox').iCheck({
                 checkboxClass: 'icheckbox_square-orange',
@@ -300,7 +327,12 @@ $(document).ready(function() {
         /*End Footer Total*/
     });
     new $.fn.dataTable.FixedHeader( table );
+    // Warehouse select change event
+    $('#warehouse_id').on('change', function() {
+        table.ajax.reload(); // Reload DataTable when warehouse_id changes
+    });
 });
+
 </script>
 <script src="<?php echo $theme_link; ?>js/sales.js?id=1"></script>
 <script type="text/javascript">

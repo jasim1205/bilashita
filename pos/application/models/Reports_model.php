@@ -66,6 +66,45 @@ class Reports_model extends CI_Model {
 
 	    exit;
 	}
+	
+	public function show_due_report(){
+	    $this->db->select("b.customer_name, b.customer_code, 
+                   SUM(a.grand_total) AS total_grand_total, 
+                   SUM(a.paid_amount) AS total_paid_amount, 
+                   (SUM(a.grand_total) - SUM(a.paid_amount)) AS total_due,
+                   (SELECT username FROM db_users WHERE a.salesman_id = db_users.id) AS username");
+        $this->db->from("db_sales as a");
+        $this->db->join("db_customers as b", "b.id = a.customer_id", "inner");
+        $this->db->where("a.sales_status", "Final");
+        $this->db->group_by("b.customer_name, b.customer_code");
+        $this->db->having("total_due >", 0);
+        $this->db->order_by("total_due", "DESC");
+        
+        $q1 = $this->db->get();
+    	if($q1->num_rows()>0){
+			$i=0;
+			$tot_due_amount=0;
+				foreach ($q1->result() as $res1) {
+				echo "<tr>";
+				echo "<td>".++$i."</td>";
+				echo "<td>".$res1->customer_name."</td>";
+				echo "<td>".$res1->total_grand_total."</td>";
+				echo "<td>".$res1->total_paid_amount."</td>";
+				echo "<td>".$res1->total_due."</td>";
+				echo "</tr>";
+				$tot_due_amount+=$res1->total_due;
+			}
+			echo "<tr>
+				  <td class='text-right text-bold' colspan='4'><b>Total :</b></td>
+				  <td class='text-bold'>".app_number_format($tot_due_amount)."</td>
+			  </tr>";
+    	}else{
+			echo "<tr>";
+			echo "<td class='text-center text-danger' colspan=5>No Records Found</td>";
+			echo "</tr>";
+		}
+    	exit;
+	}
 
 	public function show_sales_return_report(){
 		extract($_POST);
@@ -327,8 +366,10 @@ class Reports_model extends CI_Model {
 			$tot_sales_price=0;
 			$tot_stock=0;
 			foreach ($q1->result() as $res1) {
+			   
 				$tax_type = ($res1->tax_type=='Inclusive') ? 'Inc.' : 'Exc.';
 				$stock_value = $res1->purchase_price * $res1->stockr;
+				if($stock_value > 0){
 				echo "<tr>";
 				echo "<td>".++$i."</td>";
 				echo "<td>".$res1->item_code."</td>";
@@ -343,7 +384,7 @@ class Reports_model extends CI_Model {
 				$tot_sales_price+=$res1->sales_price;
 				$tot_stock_value+=$stock_value;
 				$tot_stock+=$res1->stockr;
-
+			    }
 			}
 
 			echo "<tr>

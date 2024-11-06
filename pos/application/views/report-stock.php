@@ -38,7 +38,31 @@
                            <li><a href="#tab_2" data-toggle="tab"><?= $this->lang->line('brand_wise'); ?></a></li>
                         </ul>
                         <div class="tab-content">
-                           <div class="tab-pane active" id="tab_1">
+                            <div class="tab-pane active" id="tab_1">
+                            <div class="form-group col-md-4">
+                            <!-- <label for="warehouse_id"><?= $this->lang->line('warehouse'); ?><span class="text-danger">*</span></label> -->
+                            <select class="form-control select2" id="warehouse_id" name="warehouse_id"  style="width: 100%;" onkeyup="shift_cursor(event,'mobile')" onchange="get_product_warehouse()">
+                              <?php
+                                  $query1 ="select * from db_warehouse where status=1";
+                                  $q1=$this->db->query($query1);
+                                  if($q1->num_rows($q1)>0)
+                                    { 
+                                        echo "<option value=''>-Select Warehouse-</option>";
+                                        foreach($q1->result() as $res1)
+                                    {
+                                        $selected=($warehouse_id==$res1->id) ? 'selected' : '';
+                                        echo "<option $selected  value='".$res1->id."'>".$res1->warehouse_name ."</option>";
+                                    }
+                                    }
+                                    else
+                                    {
+                                        ?>
+                              <option value="">No Records Found</option>
+                              <?php
+                                  }
+                                  ?>
+                            </select>
+                          </div>
                               <div class="row">
                                  <!-- right column -->
                                  <div class="col-md-12">

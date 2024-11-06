@@ -461,6 +461,7 @@
             <?php } ?>
             <?php if($CI->permissions('sales_report')) { ?>
             <li class="report-sales-active-li"><a href="<?php echo $base_url; ?>reports/sales" ><i class="fa fa-files-o "></i> <span><?= $this->lang->line('sales_report'); ?></span></a></li>
+            <li class="report-sales-active-li"><a href="<?php echo $base_url; ?>reports/due" ><i class="fa fa-files-o "></i> <span><?= $this->lang->line('due_report'); ?></span></a></li>
             <li class="report-sales-active-li"><a href="<?php echo $base_url; ?>reports/salesman" ><i class="fa fa-files-o "></i> <span><?= $this->lang->line('salesman'); ?></span></a></li>
             <?php } ?>
             <?php if($CI->permissions('sales_return_report')) { ?>

@@ -188,7 +188,7 @@ function load_datatable(){
             ]
         },
         /* FOR EXPORT BUTTONS END */
-
+        "lengthMenu": [ [10, 50, 100, -1],[10, 50, 100, "All"] ],
         "processing": true, //Feature control the processing indicator.
         "serverSide": true, //Feature control DataTables' server-side processing mode.
         "order": [], //Initial no order.

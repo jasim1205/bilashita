@@ -15,7 +15,7 @@ class Sales_model extends CI_Model {
 		$CI =& get_instance();
 	}
 
-	private function _get_datatables_query($customerId=false){
+	private function _get_datatables_query($customerId=false,$warehouse_id=false){
 		$this->db->select($this->column_order);
 		$this->db->from($this->table);
 		$this->db->select("coalesce(a.grand_total,0)-coalesce(a.paid_amount,0) as sales_due");
@@ -24,7 +24,7 @@ class Sales_model extends CI_Model {
 		if($customerId){$this->db->where('a.customer_id',$customerId);}
 		$this->db->where('b.id=a.customer_id');
 		$this->db->where('c.id=a.warehouse_id');
-
+		if($warehouse_id){$this->db->where('a.warehouse_id',$warehouse_id);}
 		$i = 0;
 
 		foreach ($this->column_search as $item) // loop column
@@ -53,9 +53,9 @@ class Sales_model extends CI_Model {
 		}
 	}
 
-	function get_datatables($customerId=false)
+	function get_datatables($customerId=false,$warehouse_id=false)
 	{
-		$this->_get_datatables_query($customerId);
+		$this->_get_datatables_query($customerId,$warehouse_id);
 		if($_POST['length'] != -1)
 		$this->db->limit($_POST['length'], $_POST['start']);
 		$query = $this->db->get();
@@ -620,29 +620,31 @@ class Sales_model extends CI_Model {
 		foreach ($q1->result() as $res1) {
 			$q2=$this->db->query("select * from db_items where id=".$res1->item_id);
 			$q3=$this->db->query("select * from db_tax where id=".$res1->tax_id)->row();
-
-			$info['item_id'] = $res1->item_id;
-			$info['description'] = $res1->description;
-			$info['item_name'] = $q2->row()->item_name;
-			$info['item_code'] = $q2->row()->item_code;
-			//$info['description'] = $res1->description;
-			$info['item_sales_qty'] = $res1->sales_qty;
-			$info['item_available_qty'] = $q2->row()->stock+$info['item_sales_qty'];
-			$info['item_price'] = $q2->row()->price;
-			//$info['item_sales_price'] = $q2->row()->sales_price;
-			$info['item_sales_price'] = $res1->price_per_unit;
-			//$info['item_tax_id'] = $res1->tax_id;
-			$info['item_tax_name'] = $q3->tax_name;
-			$info['item_tax_id'] = $q3->id;
-			$info['item_tax'] = $q3->tax;
-			$info['item_tax_type'] = $res1->tax_type;
-			$info['item_tax_amt'] = $res1->tax_amt;
-			$info['item_discount'] = $res1->discount_input;
-
-			$info['item_discount_type'] = $res1->discount_type;
-			$info['item_discount_input'] = $res1->discount_input;
-
-			$result = $this->return_row_with_data($rowcount++,$info);
+            if($q2->row()){
+    			$info['item_id'] = $res1->item_id;
+    			$info['description'] = $res1->description;
+    			$info['item_name'] = $q2->row()->item_name;
+    			$info['item_code'] = $q2->row()->item_code;
+    			//$info['description'] = $res1->description;
+    			$info['item_sales_qty'] = $res1->sales_qty;
+    			$info['item_available_qty'] = $q2->row()->stock+$info['item_sales_qty'];
+    			$info['item_price'] = $q2->row()->price;
+    			//$info['item_sales_price'] = $q2->row()->sales_price;
+    			$info['item_sales_price'] = $res1->price_per_unit;
+    			//$info['item_tax_id'] = $res1->tax_id;
+    			$info['item_tax_name'] = $q3->tax_name;
+    			$info['item_tax_id'] = $q3->id;
+    			$info['item_tax'] = $q3->tax;
+    			$info['item_tax_type'] = $res1->tax_type;
+    			$info['item_tax_amt'] = $res1->tax_amt;
+    			$info['item_discount'] = $res1->discount_input;
+    
+    			$info['item_discount_type'] = $res1->discount_type;
+    			$info['item_discount_input'] = $res1->discount_input;
+    			
+    
+    			$result = $this->return_row_with_data($rowcount++,$info);
+    		}
 		}
 		return $result;
 	}
