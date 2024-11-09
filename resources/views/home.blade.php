@@ -43,7 +43,7 @@
         <div class="container">
             <!-- <div class="row"> -->
             <div class="category-group">
-                <?php $category = DB::table('db_category')->where('is_slied', '1')->select('id','category_name','image','is_slied')->get(); ?>
+                <?php $category = DB::table('db_category')->where('is_slied', '1')->select('id','category_name','image','is_slied')->take(4)->get(); ?>
                 @forelse ($category as $cat)
 
                 <div class="card">
