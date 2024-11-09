@@ -92,7 +92,7 @@ $('#save,#update').click(function (e) {
 						$("#"+this_id).attr('disabled',true);  //Enable Save or Update button
 						$.ajax({
 						type: 'POST',
-						url: base_url+'Homegallery/update_gallery',
+						url: base_url+'homegallery/update_gallery',
 						data: data,
 						cache: false,
 						contentType: false,
@@ -103,7 +103,7 @@ $('#save,#update').click(function (e) {
 							if(result=="success")
 							{
 								//toastr["success"]("Record Updated Successfully!");
-								window.location=base_url+"Homegallery/view";
+								window.location=base_url+"homegallery/view";
 							}
 							else if(result=="failed")
 							{
