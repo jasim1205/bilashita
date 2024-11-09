@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class FeatureCategory_model extends CI_Model {
+class Featurecategory_model extends CI_Model {
 
 	var $table = 'feature_categorys';
 	var $column_order = array('title','link','image',); //set column field database for datatable orderable

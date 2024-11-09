@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class HomeGallery_model extends CI_Model {
+class Homegallery_model extends CI_Model {
 
 	var $table = 'home_gallerys';
 	var $column_order = array(null, 'title','link','short_description','image','order_by'); //set column field database for datatable orderable

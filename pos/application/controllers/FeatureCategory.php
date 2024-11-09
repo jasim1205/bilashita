@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class FeatureCategory extends MY_Controller {
+class Featurecategory extends MY_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load_global();
-		$this->load->model('FeatureCategory_model','featurecategory');
+		$this->load->model('Featurecategory_model','featurecategory');
 	}
 
 	public function add(){

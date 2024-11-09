@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class HomeGallery extends MY_Controller {
+class Homegallery extends MY_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load_global();
-		$this->load->model('HomeGallery_model','gallery');
+		$this->load->model('Homegallery_model','gallery');
 	}
 
 	public function add(){
