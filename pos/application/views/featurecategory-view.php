@@ -143,7 +143,7 @@ $(document).ready(function() {
         //Set column definition initialisation properties.
         "columnDefs": [
         {
-            "targets": [ 0,4 ], //first column / numbering column
+            "targets": [ 0,3 ], //first column / numbering column
             "orderable": false, //set not orderable
         },
         {
