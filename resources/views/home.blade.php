@@ -43,12 +43,14 @@
         <div class="container">
             <!-- <div class="row"> -->
             <div class="category-group">
-                <?php $category = DB::table('db_category')->where('is_slied', '1')->select('id','category_name','image','is_slied')->take(4)->get(); ?>
+                <?php $category = DB::table('feature_categorys')->take(4)->get(); ?>
                 @forelse ($category as $cat)
 
                 <div class="card">
-                    <img src="{{ asset('./../pos/uploads/category/'.$cat->image) }}" alt="categories-1" width="30px">
-                    <span class="cat-title">{{ $cat->category_name }}</span>
+                    <a href="{{$cat->link}}">
+                    <img src="{{ asset('./../pos/uploads/feature_category/'.$cat->image) }}" alt="categories-1" width="30px">
+                    <span class="cat-title">{{ $cat->title }}</span>
+                    </a>
                 </div>
                 {{-- <div class="card">
                     <img src="{{ asset('assets/images/category-1.png') }}" alt="categories-2" width="30px">

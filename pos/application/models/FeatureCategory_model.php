@@ -138,7 +138,7 @@ class FeatureCategory_model extends CI_Model {
 			return $data;
 		}
 	}
-	public function update_gallery(){
+	public function update_featurecategory(){
 		//Filtering XSS and html escape from user inputs
 		extract($this->security->xss_clean(html_escape(array_merge($this->data,$_POST))));
 
@@ -175,7 +175,8 @@ class FeatureCategory_model extends CI_Model {
             }
         }
 
-			$query1="update feature_categorys set $file_name,title='$title',link='$link' where id=$q_id";
+			$query1="update feature_categorys set $file_name title='$title',link='$link' where id=$q_id";
+
 			if ($this->db->simple_query($query1)){
 					$this->session->set_flashdata('success', 'Success!! Slider Updated Successfully!');
 			        return "success";
