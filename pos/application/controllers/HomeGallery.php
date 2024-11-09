@@ -121,10 +121,10 @@ class Homegallery extends MY_Controller {
 
 
 	public function delete_gallery(){
-        $this->load->model('HomeGallery_model');
+        $this->load->model('Homegallery_model');
 		$this->permission_check_with_msg('items_category_delete');
 		$id=$this->input->post('q_id');
-		return $this->HomeGallery_model->delete_gallery_from_table($id);
+		return $this->Homegallery_model->delete_gallery_from_table($id);
 	}
 
 

@@ -120,10 +120,10 @@ class Featurecategory extends MY_Controller {
 
 
 	public function delete_featurecategory(){
-        $this->load->model('FeatureCategory_model');
+        $this->load->model('Featurecategory_model');
 		$this->permission_check_with_msg('items_category_delete');
 		$id=$this->input->post('q_id');
-		return $this->FeatureCategory_model->delete_featurecategory_from_table($id);
+		return $this->Featurecategory_model->delete_featurecategory_from_table($id);
 	}
 
 
