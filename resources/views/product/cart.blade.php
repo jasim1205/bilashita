@@ -132,7 +132,7 @@
                 </div>
                 @endif
                 <hr />
-                <a class="submit shadow" href="{{ route('customer.checkoutpage') }}" style="    padding: 5px; color: green; border-radius: 5px;">Process to Chackout</a>
+                <a class="submit shadow" href="{{ route('customer.checkoutpage') }}" style="    padding: 5px; color: green; border-radius: 5px;">Process to Checkout</a>
               </div>
             </div>
           </div>

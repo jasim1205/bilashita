@@ -4,7 +4,7 @@
 <div class="col" style="padding: 0">
     <div class="form p-4">
         <div class="bg-white rounded shadow p-3">
-            <p class="text-center bg-warning p-2 text-white"><b>Chackout Details</b></p>
+            <p class="text-center bg-warning p-2 text-white"><b>Checkout Details</b></p>
             <hr />
             <div class="m-auto my-3 ms-5">
                 <form action="{{ route('customer.placeorder') }}" id="checkoutForm" method='post'>
@@ -190,7 +190,7 @@
                                     <tfoot>
                                     </tfoot>
                                 </table>
-                                <button type="submit" class="submit shadow" onclick="disableButton(this)">place Order</button>
+                                <button type="submit" class="btn btn-success submit shadow" onclick="disableButton(this)">place Order</button>
                                 <p id="cartErrorMessage" class="text-danger mt-2" style="display: none;">Your cart is empty. Please add items to your cart before placing an order.</p>
                             </div>
                         </div>

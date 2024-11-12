@@ -93,7 +93,15 @@
                     <i class="bi bi-brightness-high-fill"></i>Weight: {{ $show_product->weight }}
                 </li>
                 <li class="nav-item">
-                    <i class="bi bi-brightness-high-fill"></i>Category: {{ $childcat?->childcategory_name }}
+                    <i class="bi bi-brightness-high-fill"></i>Category: 
+                        @if($show_product->child_category)
+                            {{$show_product->child_category?->childcategory_name}}
+                        @elseif($show_product->sub_category)
+                            {{$show_product->sub_category?->subcategory_name}}
+                        @else
+                            {{$show_product->category?->category_name}}
+                        
+                        @endif
                 </li>
                 </ul>
             </div>

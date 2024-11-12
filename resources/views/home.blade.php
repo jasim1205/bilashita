@@ -47,9 +47,9 @@
                 @forelse ($category as $cat)
 
                 <div class="card">
-                    <a href="{{$cat->link}}">
-                    <img src="{{ asset('./../pos/uploads/feature_category/'.$cat->image) }}" alt="categories-1" width="30px">
-                    <span class="cat-title">{{ $cat->title }}</span>
+                    <a href="{{$cat?->link}}">
+                    <img src="{{ asset('./../pos/uploads/feature_category/'.$cat?->image) }}" alt="categories-1" width="30px">
+                    <span class="cat-title">{{ $cat?->title }}</span>
                     </a>
                 </div>
                 {{-- <div class="card">
@@ -94,8 +94,8 @@
             <div class="product-ads-group mx-auto">
                 <!-- <div class="row"> -->
                 @foreach ($gallery as $item)
-                <a href="{{$item->link}}" target="_blank">
-                    <img class="hero-img rounded" src="{{ asset('./../pos/uploads/gallery_image/'.$item->image) }}" width="180px" height="150px" alt="card-img-1">
+                <a href="{{$item?->link}}" target="_blank">
+                    <img class="hero-img rounded" src="{{ asset('./../pos/uploads/gallery_image/'.$item?->image) }}" width="180px" height="150px" alt="card-img-1">
                 </a>
                 {{-- <img class="hero-img" src="{{ asset('assets/images/product-ads-2.png') }}" width="200px" alt="card-img-1">
                 <img class="hero-img" src="{{ asset('assets/images/product-ads-3.png') }}" width="200px" alt="card-img-1">
@@ -123,12 +123,14 @@
                               <img src="{{ asset('./../pos/' . $p->item_image) }}" alt="categories-1" width="100px">
                         </a>
                         <div class="card-body">
-                            <h5 class="card-title">{{ $p->item_name }}</h5>
-                            <p>
-                                <span class="current-price">{{ $p->web_price .' '.'TK'}}</span>
-                            </p>
-                            <p class="regular-price"><strike class="regular-price">3000.00</strike></p>
-                            <p class="price">Price</p>
+                            <a href="{{ route('product_details.singleProduct',$p->id) }}">
+                                <h5 class="card-title">{{ $p->item_name }}</h5>
+                                <p>
+                                    <span class="current-price">{{ $p->web_price .' '.'TK'}}</span>
+                                </p>
+                                <p class="regular-price"><strike class="regular-price">{{$p->old_price}}</strike></p>
+                                <p class="price">Price</p>
+                            </a>
                         </div>
                         <form class="" action="{{ route('add-to-cart') }}" method="post">
                             @csrf
@@ -246,12 +248,14 @@
                               <img src="{{ asset('./../pos/' . $p->item_image) }}" alt="categories-1" width="100px">
                         </a>
                         <div class="card-body">
-                            <h5 class="card-title">{{ $p->item_name }}</h5>
-                            <p>
-                                <span class="current-price">{{ $p->web_price .' '.'TK' }}</span>
-                            </p>
-                            <p class="regular-price"><strike class="regular-price">3000.00</strike></p>
-                            <p class="price">Price</p>
+                            <a href="{{ route('product_details.singleProduct',$p->id) }}">
+                                <h5 class="card-title">{{ $p->item_name }}</h5>
+                                <p>
+                                    <span class="current-price">{{ $p->web_price .' '.'TK' }}</span>
+                                </p>
+                                <p class="regular-price"><strike class="regular-price">{{$p->old_price}}</strike></p>
+                                <p class="price">Price</p>
+                            </a>
                         </div>
                         <form class="" action="{{ route('add-to-cart') }}" method="post">
                             @csrf
@@ -290,12 +294,14 @@
                               <img src="{{ asset('./../pos/' . $p->item_image) }}" alt="categories-1" width="100px">
                         </a>
                         <div class="card-body">
-                            <h5 class="card-title">{{ $p->item_name }}</h5>
-                            <p>
-                                <span class="current-price">{{ $p->web_price .' '.'TK' }}</span>
-                            </p>
-                            <p class="regular-price"><strike class="regular-price">3000.00</strike></p>
-                            <p class="price">Price</p>
+                            <a href="{{ route('product_details.singleProduct',$p->id) }}">
+                                <h5 class="card-title">{{ $p->item_name }}</h5>
+                                <p>
+                                    <span class="current-price">{{ $p->web_price .' '.'TK' }}</span>
+                                </p>
+                                <p class="regular-price"><strike class="regular-price">{{$p->old_price}}</strike></p>
+                                <p class="price">Price</p>
+                            </a>
                         </div>
                         <form class="" action="{{ route('add-to-cart') }}" method="post">
                             @csrf

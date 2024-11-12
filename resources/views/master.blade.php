@@ -118,7 +118,7 @@
                                     class="fa fa-search"></i> </button> </form>
                     </div> --}}
                     <ul class="dev3-243ztdnf8yww0">
-                        <li class="dev3-3m8wtemb60w00 dev3-9uy6i2cdjmw0">
+                        {{-- <li class="dev3-3m8wtemb60w00 dev3-9uy6i2cdjmw0">
                             <a href="#"><i class="bi bi-person"></i>My Account <i
                                     class="fa-solid fa-angle-down"></i></a>
                             <ul class="dev3-2rybrszefoe00">
@@ -131,7 +131,7 @@
                                     <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
                                 @endif
                             </ul>
-                        </li>
+                        </li> --}}
                         {{-- <li class="dev3-9uy6i2cdjmw0"> <a href="#"><em class="round">7</em><i class="fa-solid fa-heart"></i><span class="hide-text">Wishlist</span></a> </li> --}}
                         <li class="dev3-1se0vseabf5s0 dev3-9uy6i2cdjmw0">
                             {{-- <a href="{{ route('cart.page') }}"><i class="bi bi-basket"></i>

@@ -30,9 +30,9 @@ class FrontendController extends Controller
         $slide=HeaderSlider::all();
         $footslider=FooterSlider::all();
         $frontsettt=FrontSettings::first();
-        $popular_products = DB::table('db_items')->where('is_feature', '1')->select('id', 'item_name', 'sales_price', 'web_price', 'item_image', 'is_feature')->limit(16)->inRandomOrder()->orderBy('item_name')->where('web_price','>',0)->get();
-        $top_products  = DB::table('db_items')->where('is_latest', '1')->select('id', 'item_name', 'sales_price', 'web_price', 'item_image', 'is_top')->limit(16)->inRandomOrder()->orderBy('item_name')->where('web_price','>',0)->get();
-        $offer_products = DB::table('db_items')->where('is_top', '1')->select('id', 'item_name', 'sales_price', 'web_price', 'item_image', 'is_top')->limit(16)->inRandomOrder()->orderBy('item_name')->where('web_price','>',0)->get();
+        $popular_products = DB::table('db_items')->where('is_feature', '1')->select('id', 'item_name', 'sales_price', 'web_price', 'item_image', 'is_feature','old_price')->limit(16)->inRandomOrder()->orderBy('item_name')->where('web_price','>',0)->get();
+        $top_products  = DB::table('db_items')->where('is_latest', '1')->select('id', 'item_name', 'sales_price', 'web_price', 'item_image', 'is_top','old_price')->limit(16)->inRandomOrder()->orderBy('item_name')->where('web_price','>',0)->get();
+        $offer_products = DB::table('db_items')->where('is_top', '1')->select('id', 'item_name', 'sales_price', 'web_price', 'item_image', 'is_top','old_price')->limit(16)->inRandomOrder()->orderBy('item_name')->where('web_price','>',0)->get();
 
         $heroone = DB::table('header_sliders')->where('order_by', '1')->select('id', 'title', 'short_description', 'slider_image', 'link', 'order_by')->first();
         $herotwo = DB::table('header_sliders')->where('order_by', '2')->select('id', 'title', 'short_description', 'slider_image', 'link', 'order_by')->first();
