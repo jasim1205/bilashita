@@ -25,8 +25,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ asset('assets/vendors/bootstrap-5.3.3/js/bootstrap.min.js') }}"></script>
 
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('assets/resource/css/main.css') }}">
 
 
 
@@ -157,124 +158,45 @@
         @yield('content')
 
     </main>
-    <!-- F O O T E R -->
-    <footer class="footer-32892 pb-0 mt-5">
-        <div class="site-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md pr-md-5 mb-4 mb-md-0">
-                        <h3>About Us</h3>
-                        <p class="mb-4">Bilashita specializes in providing premium-grade lubricants, motor parts, and
-                            related chemicals, catering to diverse industries. With a commitment to quality and
-                            reliability, we ensure optimal performance and longevity for motors of all types. Trust us
+     <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 p-5">
+                    <div class="footer-logo">
+                        <img class="img-fluid" src="{{ asset('./../pos/uploads/fsettings_image') }}/{{ \App\Models\FrontSettings::first()->logo_img }}" alt="sorry no image found" />
+                    </div>
+                    <p class="footer-about-footer text-white">{{ \App\Models\FrontSettings::first()->description }}
+                    </p>
+                    <div class="social-icon">
+                        <a href="{{ \App\Models\FrontSettings::first()->facebooklink }}"><i class="bi bi-facebook"></i></a>
+                        <a href="{{ \App\Models\FrontSettings::first()->twitterlink }}"><i class="bi bi-twitter"></i></a>
+                        <a href="{{ \App\Models\FrontSettings::first()->linkdinlink }}"><i class="bi bi-linkedin"></i></a>
+                        <a href="{{ \App\Models\FrontSettings::first()->youtubelink }}"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-sm-6 p-5">
+                    <div class="d-flex apps-div">
+                        <img src="{{ asset('assets/resource') }}/img/androied.png" alt="" />
+                        <img src="{{ asset('assets/resource') }}/img/apple.png" alt="" />
+                    </div>
+                    <div class="address text-white">
+                        <i class="bi bi-geo-alt-fill"> </i>
+                        <p>{{ \App\Models\FrontSettings::first()->address }}
                         </p>
-                    </div>
-                    @php
-                         $footslider = DB::table('footer_sliders')->select('id', 'title', 'short_description', 'fslider_image', 'link')->take(2)->get();
-                    @endphp
-                    <div class="col-md mb-4 mb-md-0">
-                        <h3>Regular Product</h3>
-                        <div class="row gallery">
-                            @foreach($footslider as $item)
-                            <div class="">
-                                <a href="#">
-                                    <img src="{{ asset('./../pos/uploads/fslider_image/'.$item?->fslider_image) }}" alt="categories-1" class="rounded" style="height: 100px;">
-                                </a>
-                                {{-- <img src="{{asset('assets/images/product-1.png')}}" alt="categories-1" width="100px"> --}}
-                                {{-- <div class="card-body">
-                                    <h5 class="card-title">Airphone 6</h5>
-                                    <p>
-                                        <span class="current-price">3000.00</span>
-                                        <span class="regular-price"><strike>3000.00</strike></span>
-                                    </p>
-                                    <p class="price">Price</p>
-                                </div> --}}
-                                {{-- <button type="button" class="btn btn-light">
-                                    <i class="fa-solid fa-basket-shopping"></i>
-                                    Buy Now
-                                </button> --}}
-                            </div>
-                            {{-- <div class="product-card">
-                                <img src="assets/images/product-1.png" alt="categories-1" width="100px">
-                                <div class="card-body">
-                                    <h5 class="card-title">Airphone 6</h5>
-                                    <p>
-                                        <span class="current-price">3000.00</span>
-                                        <span class="regular-price"><strike>3000.00</strike></span>
-                                    </p>
-                                    <p class="price">Price</p>
-                                </div>
-                                <button type="button" class="btn btn-light">
-                                    <i class="fa-solid fa-basket-shopping"></i>
-                                    Buy Now
-                                </button>
-                            </div> --}}
-                            @endforeach
-                        </div>
-                    </div>
-                    @php
-                        $footslidertwo = DB::table('footer_sliders')->select('id', 'title', 'short_description', 'fslider_image', 'link')->take(2)->orderBy('id','desc')->get();
-                    @endphp
-                    <div class="col-md-3 mb-4 mb-md-0">
-                        <h3>Recent Product</h3>
-                        <div class="row gallery">
-                            @foreach($footslidertwo as $item)
-                            <div class="">
-                                <a href="#">
-                                    <img src="{{ asset('./../pos/uploads/fslider_image/'.$item?->fslider_image) }}" alt="categories-1" class="rounded" style="height: 100px;">
-                                </a>
-                                {{-- <img src="assets/images/product-1.png" alt="categories-1" width="100px">
-                                <div class="card-body">
-                                    <h5 class="card-title">Airphone 6</h5>
-                                    <p>
-                                        <span class="current-price">3000.00</span>
-                                        <span class="regular-price"><strike>3000.00</strike></span>
-                                    </p>
-                                    <p class="price">Price</p>
-                                </div>
-                                <button type="button" class="btn btn-light">
-                                    <i class="fa-solid fa-basket-shopping"></i>
-                                    Buy Now
-                                </button> --}}
-                            </div>
-                            {{-- <div class="product-card">
-                                <img src="assets/images/product-1.png" alt="categories-1" width="100px">
-                                <div class="card-body">
-                                    <h5 class="card-title">Airphone 6</h5>
-                                    <p>
-                                        <span class="current-price">3000.00</span>
-                                        <span class="regular-price"><strike>3000.00</strike></span>
-                                    </p>
-                                    <p class="price">Price</p>
-                                </div>
-                                <button type="button" class="btn btn-light">
-                                    <i class="fa-solid fa-basket-shopping"></i>
-                                    Buy Now
-                                </button>
-                            </div> --}}
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="py-5 footer-menu-wrap d-md-flex align-items-center justify-content-between">
-                            <ul class="list-unstyled footer-menu mr-auto">
-                                <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa-brands fa-square-x-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
-                                <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
-                            </ul>
-                            <div class="site-logo-wrap ml-auto">
-                                <a href="muktodharaltd.com" class="site-logo" target="_blank">
-                                    <img src="https://muktodharaltd.com/wp-content/uploads/2022/10/updatelogo.png"
-                                        alt="Image" class="img-fluid" width="150px">
-                                </a>
-                            </div>
-                        </div>
+                        <br />
+                        <br />
+                        <i class="bi bi-telephone-fill"></i>
+                        <p>{{ \App\Models\FrontSettings::first()->phone }}</p>
+                        <br />
+                        <br />
+                        <i class="bi bi-envelope-fill"></i>
+                        <p style="font-family: 'bootstrap-icons';">{{ \App\Models\FrontSettings::first()->email }}</p>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
+   
     <script src="{{ asset('lib/vendor/jquery/jquery-3.6.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/demo.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
