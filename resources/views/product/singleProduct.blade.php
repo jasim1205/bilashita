@@ -244,20 +244,23 @@
         <div class="product-row my-3">
             <div class="row justify-content-center">
                 @forelse ($related_products as $rproduct)
-                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                     <div class="card shadow mb-3" style="max-width: 200px; max-height:355px;">
                         <a href="{{ route('product_details.singleProduct',$rproduct->id) }}">
                             <img class="card-img-top" src="{{ asset('./../pos/') }}/{{ $rproduct->item_image }}" width="200px" height="200px"/>
                         </a>
                     <div class="card-body">
-                        <p class="card-title text-center"> {{ $rproduct->item_name }} </p>
+                        <p class="card-title text-center"> 
+                            {{ implode(' ', array_slice(explode(' ', $rproduct->item_name), 0, 5)) }}{{ str_word_count($rproduct->item_name) > 6 ? '...' : '' }}
+                            {{-- {{ $rproduct->item_name }}  --}}
+                        </p>
                         <p class="card-title text-center m-0 p-0">{{ $rproduct->web_price .' '.'TK' }}</p>
                         <form class="" action="{{ route('add-to-cart') }}" method="post">
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $rproduct->id }}">
                             <input type="hidden" id="qtyBox" placeholder="1" value="1" name="order_qty" />
                             <div class="card-button">
-                                <input class="single-cartsubmit"  onclick="addToCard('{{$show_product->id }}')"  value="+Add To Cart" />
+                                <input type="button" class="single-cartsubmit"  onclick="addToCard('{{$show_product->id }}')"  value="+Add To Cart" />
                                 <a href="#"></a>
                                 {{--  <a href="{{ route('addwishlist',$p->id) }}"><i class="bi bi-heart-fill"></i></a>  --}}
                               </div>

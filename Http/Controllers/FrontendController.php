@@ -26,6 +26,7 @@ class FrontendController extends Controller
      */
     public function index()
     {
+        die;
         $faq=Faq::all();
         $slide=HeaderSlider::all();
         $footslider=FooterSlider::all();
