@@ -2,8 +2,8 @@
 
 @section('content')
 
-<div class="col right-side" style="padding: 0">
-    <div class="cart p-4">
+<div class="col right-side" style="padding: 10px;margin-top:30px;">
+    <div class="cart my-4">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
@@ -27,7 +27,7 @@
 
 
         {{--  <p>You Add <span>{{ $total_price }} TK</span> in cart !</p>  --}}
-        <div class="progress mb-3">
+        <div class="progress my-3">
           <div
             class="progress-bar bg-warning"
             role="progressbar"
