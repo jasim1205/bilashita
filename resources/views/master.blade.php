@@ -11,8 +11,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/logo.png') }}">
     <link href="{{ asset('assets/css/root.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/css/all-style.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('lib/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('lib/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/lib/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/lib/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet" />
     {{-- <link href="{{asset('assets/css/icons/bootstrap-icons.css')}}" rel="stylesheet"/> --}}
     <link href="{{ asset('assets/css/demo.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('assets/vendors/bootstrap-5.3.3/css/bootstrap.min.css') }}">
@@ -39,18 +39,31 @@
     <!-- Main CSS -->
 
     <link rel="stylesheet" href="{{ asset('assets/resource/css/single.css') }}" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+
 </head>
 
 <body class="dev3-h8xji90zyww0">
     <header>
-        <div class="dev3-erfacg36b140">
-            <i class="dev3-3gvfdjtgvl400 fa-solid fa-list"></i>
+        <div class="dev3-erfacg36b140 justify-content-between align-items-center fixed-top" style="background-color: #3F4C6B!important;">
+            <i class="dev3-3gvfdjtgvl400 fa-solid fa-list" style="color:#fff;font-size:20px;"></i>
             <div class="dev3-3n8wvbuhw7600"><a href="{{ route('home') }}"><img
                         src="{{ asset('assets/images/logo.png') }}" alt=""></a></div>
-            <div class="dev3-1s5djf2dxh0g0"></div>
-            <div class="dev3-19uwbciixjls0">
-                <form action="#" method="post"> <input type="text" placeholder="Search..."> <button
-                        type="submit"> <i class="bi bi-search"></i> </button> </form>
+            <div class="pe-3">
+                <a href="{{ route('cart.page') }}" class="position-relative" style="text-decoration: none;">
+                    <!-- Cart icon -->
+                    <i class="fa-solid fa-cart-shopping" style="font-size: 20px; color: #fff;"></i>
+                    
+                    <!-- Badge -->
+                    <span 
+                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                        id="totalCart"
+                        style="font-size: 12x;">
+                        {{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }}
+                    </span>
+                </a>
+                
             </div>
         </div>
         @php
@@ -59,7 +72,7 @@
         <div class="dev3-2lvevpbewi200">
             <div class="container-fluid">
                 <nav class="dev3-25d3ticmqvls0">
-                    <div class="dev3-243ztdnf8yww0 dev3-2gwcdwkqhmi00">
+                    <div class="dev3-243ztdnf8yww0 dev3-2gwcdwkqhmi00 d-none d-md-block">
                         <a href="{{ route('home') }}"><img src="{{ asset('assets/images/logo.png') }}"
                                 alt=""></a> <a href="#" class="dev3-di0jbv86i000"><i
                                 class="fa-solid fa-xmark"></i></a>
@@ -197,11 +210,12 @@
         </div>
     </footer>
    
-    <script src="{{ asset('lib/vendor/jquery/jquery-3.6.1.min.js') }}"></script>
+    <script src="{{ asset('assets/lib/vendor/jquery/jquery-3.6.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/demo.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
     <script type="module" src="{{ asset('assets/js/app.js') }}"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 <script>
   $('.categorybutton').each(function(e){

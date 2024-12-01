@@ -1,0 +1,1 @@
+$(document).ready(function (){$(document).on('click', '.dev3-22i225llc1og0 > div', function(){$('body').attr('class', $(this).attr('class'));});});

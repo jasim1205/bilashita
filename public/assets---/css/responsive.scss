@@ -1,0 +1,73 @@
+
+@use 'sass:math';
+@import "_variables.scss";
+
+@function rem($px) {
+  @if math.is-unitless($px) {
+    @return math.div($px, 16)+rem;
+  }
+  @else {
+    @error "Don'\t use units when using the rem() function only numbers";
+  }
+}
+
+
+
+
+@media screen and (max-width: rem($mobile)) {
+    .desktop-only{
+        display: none !important;
+    }
+    .section-hero{
+    .hero-img-group{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+        overflow: hidden;
+        gap: .5rem;
+        
+        .hero-img{
+            width: 100%;
+        }
+    }
+}
+
+.section-product{
+    padding: rem(15) rem(5);
+    .title{
+
+    }
+
+    .product-groups{
+        grid-template-columns: repeat(auto-fit, minmax(70%, 1fr));
+        gap: .5rem;
+
+        .card{
+            min-width: 100%;
+        }
+    }
+}
+
+}
+
+@media screen and (min-width: rem($desktop)) {
+    .desktop-only{
+        display: none !important;
+    }
+}
+
+@media screen and (min-width:rem($mobile)) and (max-width: rem($tab)) {
+    .desktop-only{
+        display: none;
+    }
+    .section-product{
+
+    .product-groups{
+        grid-template-columns: repeat(auto-fit, minmax(70%, 1fr));
+        gap: 1rem;
+
+        .card{
+            min-width: 18rem;
+        }
+    }
+    }
+}
