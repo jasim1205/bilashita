@@ -62,7 +62,7 @@
                 <div class="col-6 col-sm-3">
                     <div class="card justify-content-center align-items-center" style="padding: 8px 0px">
                         <a href="{{$cat?->link}}">
-                        <img src="{{ asset('./../pos/uploads/feature_category/'.$cat?->image) }}" alt="categories-1" width="40px">
+                        <img src="{{ asset('./../pos/uploads/feature_category/'.$cat?->image) }}" alt="categories-1" width="40px" height="36px">
                         <span class="cat-title text-black fw-bold">{{ $cat?->title }}</span>
                         </a>
                     </div>
