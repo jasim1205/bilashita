@@ -190,7 +190,7 @@
                                                    <label for="address" class="col-sm-4 control-label"><?= $this->lang->line('site_logo'); ?></label>
                                                    <div class="col-sm-8">
                                                       <input type="file" id="logo" name="logo">
-                                                      <span id="logo_msg" style="display:block;" class="text-danger">Max Width/Height: 300px * 300px & Size: 300px </span>
+                                                      <span id="logo_msg" style="display:block;" class="text-danger">Max Width/Height: 207px * 55px & Size:500Kb Format :png </span>
                                                    </div>
                                                 </div>
                                             

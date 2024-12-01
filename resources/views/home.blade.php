@@ -8,7 +8,7 @@
     }
 </style>
     <!--  ? H E R O   S E C T I O N -->
-    <section class="section-hero mt-5">
+    <section class="section-hero">
     <div class="container">
         {{-- <div class="row">
             <div class="col-md-3">
@@ -17,22 +17,22 @@
             <div class="col-md-9"> --}}
                 <div class="row">
                     <div class="col-md-7">
-                        <img src="{{ asset('./../pos/uploads/slider_image/'.$heroone?->slider_image) }}" alt="slider-1" class="img-fluid rounded" style="height: 300px;">
+                        <img src="{{ asset('./../pos/uploads/slider_image/'.$heroone?->slider_image) }}" alt="slider-1" class="img-fluid rounded my-2" style="height: 300px;">
                         {{-- <img src="{{ asset('assets/images/slider-1.png') }}" alt="slider-1" class="img-fluid"> --}}
                     </div>
                     <div class="col-md-5 hero-img-group">
                         <div class="row gx-1">
                             <div class="col-6">
-                                <img class="hero-img rounded" src="{{ asset('./../pos/uploads/slider_image/'.$herotwo?->slider_image) }}" alt="card-img-1">
+                                <img class="hero-img rounded my-2" src="{{ asset('./../pos/uploads/slider_image/'.$herotwo?->slider_image) }}" alt="card-img-1">
                             </div>
                             <div class="col-6">
-                                <img class="hero-img rounded" src="{{ asset('./../pos/uploads/slider_image/'.$herotwo?->slider_image) }}" alt="card-img-1" >
+                                <img class="hero-img rounded my-2" src="{{ asset('./../pos/uploads/slider_image/'.$herotwo?->slider_image) }}" alt="card-img-1" >
                             </div>
                             <div class="col-6">
-                                <img class="hero-img rounded" src="{{ asset('./../pos/uploads/slider_image/'.$herotwo?->slider_image) }}" alt="card-img-1" >
+                                <img class="hero-img rounded my-2" src="{{ asset('./../pos/uploads/slider_image/'.$herotwo?->slider_image) }}" alt="card-img-1" >
                             </div>
                             <div class="col-6">
-                                <img class="hero-img rounded" src="{{ asset('./../pos/uploads/slider_image/'.$herotwo?->slider_image) }}" alt="card-img-1" >
+                                <img class="hero-img rounded my-2" src="{{ asset('./../pos/uploads/slider_image/'.$herotwo?->slider_image) }}" alt="card-img-1" >
                             </div>
                         </div>
                         <!-- <div class="row"> -->

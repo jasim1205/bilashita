@@ -26,7 +26,6 @@ class FrontendController extends Controller
      */
     public function index()
     {
-        die;
         $faq=Faq::all();
         $slide=HeaderSlider::all();
         $footslider=FooterSlider::all();
@@ -34,7 +33,6 @@ class FrontendController extends Controller
         $product = DB::table('db_items')->where('is_feature', '1')->select('id', 'item_name', 'sales_price', 'web_price', 'item_image', 'is_feature')->limit(20)->inRandomOrder()->orderBy('item_name')->get();
         $offer_product = DB::table('db_items')->where('is_latest', '1')->select('id', 'item_name', 'sales_price', 'web_price', 'item_image', 'is_top')->limit(20)->inRandomOrder()->orderBy('item_name')->get();
         $top_product = DB::table('db_items')->where('is_top', '1')->select('id', 'item_name', 'sales_price', 'web_price', 'item_image', 'is_top')->limit(20)->inRandomOrder()->orderBy('item_name')->get();
-        dd($product, $offer_product, $top_product);
         return view('home',compact('faq','slide','footslider','product','offer_product','frontsettt'));
     }
     public function Search(Request $request)

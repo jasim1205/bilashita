@@ -32,10 +32,9 @@
 
 
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('/') }}favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/') }}apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/') }}favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/') }}favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="{{ asset('/') }}assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/') }}apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="36x36" href="{{ asset('/') }}android-icon-36x36.png">
     <!-- Main CSS -->
 
     <link rel="stylesheet" href="{{ asset('assets/resource/css/single.css') }}" />
@@ -48,8 +47,9 @@
     <header>
         <div class="dev3-erfacg36b140 justify-content-between align-items-center fixed-top" style="background-color: #3F4C6B!important;">
             <i class="dev3-3gvfdjtgvl400 fa-solid fa-list" style="color:#fff;font-size:20px;"></i>
+          
             <div class="dev3-3n8wvbuhw7600"><a href="{{ route('home') }}"><img
-                        src="{{ asset('assets/images/logo.png') }}" alt=""></a></div>
+                        src="{{ asset('/')/pos/uploads/{{\DB::table('db_sitesettings')->first()->logo}} }}" alt=""></a></div>
             <div class="pe-3">
                 <a href="{{ route('cart.page') }}" class="position-relative" style="text-decoration: none;">
                     <!-- Cart icon -->
