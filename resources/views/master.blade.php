@@ -49,7 +49,7 @@
             <i class="dev3-3gvfdjtgvl400 fa-solid fa-list" style="color:#fff;font-size:20px;"></i>
           
             <div class="dev3-3n8wvbuhw7600"><a href="{{ route('home') }}"><img
-                        src="{{ asset('/')}}/pos/uploads/{{\DB::table('db_sitesettings')->first()->logo}} }}" alt=""></a></div>
+                        src="{{ url('/')}}/pos/uploads/{{\DB::table('db_sitesettings')->first()->logo}}" alt=""></a></div>
             <div class="pe-3">
                 <a href="{{ route('cart.page') }}" class="position-relative" style="text-decoration: none;">
                     <!-- Cart icon -->
@@ -73,7 +73,7 @@
             <div class="container-fluid">
                 <nav class="dev3-25d3ticmqvls0">
                     <div class="dev3-243ztdnf8yww0 dev3-2gwcdwkqhmi00 d-none d-md-block">
-                        <a href="{{ route('home') }}"><img src="{{ asset('assets/images/logo.png') }}"
+                        <a href="{{ route('home') }}"><img src="{{ url('/')}}/pos/uploads/{{\DB::table('db_sitesettings')->first()->logo}}"
                                 alt=""></a> <a href="#" class="dev3-di0jbv86i000"><i
                                 class="fa-solid fa-xmark"></i></a>
                     </div>
