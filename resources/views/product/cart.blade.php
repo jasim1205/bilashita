@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="col right-side" style="padding: 10px;margin-top:30px;">
+<div class="col right-side" style="margin-top:30px;">
     <div class="cart my-4">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
