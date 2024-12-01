@@ -79,7 +79,7 @@
                 <div id="add">
                 <i class="bi bi-plus"></i>
                 </div>
-                <input class="single-submit text-center" onclick="addToCard('{{$show_product->id }}')" value="Add To Cart" />
+                <input type="button" class="single-submit text-center" onclick="addToCard('{{$show_product->id }}')" value="Add To Cart" />
                 <div>
                 {{--  <i class="bi bi-heart-fill"></i>  --}}
                 </div>
@@ -315,6 +315,7 @@ let totalCart = $("#totalCart").text();
         success: function(data){
             if(data.status == true){
                 $("#totalCart").text(parseFloat(totalCart) +1);
+                window.location.reload();
             }
   }
     });

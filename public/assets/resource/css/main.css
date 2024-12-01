@@ -12,6 +12,7 @@
 }
 body {
     font-family: 'AdorshoLipi', sans-serif !important;
+    font-size: 14px;
 }
 /*================== main Header ================== */
 /* Logo Section */
@@ -24,6 +25,7 @@ body {
 .header-right-logo img {
   height: 50px;
 }
+@media (min-width: 768px) {
 .header div:first-child p {
   font-size: 18px;
   font-weight: bold;
@@ -54,6 +56,7 @@ nav {
 }
 .nav-search input[type="text"]:focus {
   outline: none;
+}
 }
 .customer-seciton i {
   font-size: 22px;
@@ -377,7 +380,7 @@ text-decoration: none;
 }
 .section-product .product-groups .card .card-title {
     text-align: start;
-    font-size: 0.875rem;
+    /* font-size: 0.875rem; */
     font-weight: 700;
     font-family: "Roboto", sans-serif;
     color: rgba(5, 53, 33, 0.8980392157);
@@ -431,3 +434,13 @@ text-decoration: none;
 }
 
 
+@media only screen and (max-width: 991px) {
+  .dev3-2lvevpbewi200 {
+      display: none;
+      height: calc(100vh - 60px);
+      top: 55px;
+      right: 0;
+      left: 0;
+      border-radius: 0px; 
+  }
+}
