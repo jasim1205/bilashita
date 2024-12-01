@@ -49,7 +49,7 @@
             <i class="dev3-3gvfdjtgvl400 fa-solid fa-list" style="color:#fff;font-size:20px;"></i>
           
             <div class="dev3-3n8wvbuhw7600"><a href="{{ route('home') }}"><img
-                        src="{{ asset('/')/pos/uploads/{{\DB::table('db_sitesettings')->first()->logo}} }}" alt=""></a></div>
+                        src="{{ asset('/')}}/pos/uploads/{{\DB::table('db_sitesettings')->first()->logo}} }}" alt=""></a></div>
             <div class="pe-3">
                 <a href="{{ route('cart.page') }}" class="position-relative" style="text-decoration: none;">
                     <!-- Cart icon -->
