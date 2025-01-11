@@ -140,7 +140,7 @@
             </div>
         </div>
         <!-- condition -->
-        <div class="container shadow bg-white p-3 my-3 rounded">
+        {{-- <div class="container shadow bg-white p-3 my-3 rounded">
         <div class="condition">
             <div class="row">
             <div class="col-sm-4">
@@ -163,7 +163,7 @@
             </div>
             </div>
         </div>
-        </div>
+        </div> --}}
         <!-- product discripiton tabs -->
         <div class="container my-4">
         <nav class="bg-white rounded shadow mb-3">

@@ -22,18 +22,18 @@
                     </div>
                     <div class="col-md-5 hero-img-group">
                         <div class="row gx-1">
-                            <div class="col-6">
+                            <div class="col-12">
                                 <img class="hero-img rounded my-2" src="{{ asset('./../pos/uploads/slider_image/'.$herotwo?->slider_image) }}" alt="card-img-1">
                             </div>
-                            <div class="col-6">
+                            <div class="col-12">
+                                <img class="hero-img rounded my-2" src="{{ asset('./../pos/uploads/slider_image/'.$herotwo?->slider_image) }}" alt="card-img-1" >
+                            </div>
+                            {{-- <div class="col-6">
                                 <img class="hero-img rounded my-2" src="{{ asset('./../pos/uploads/slider_image/'.$herotwo?->slider_image) }}" alt="card-img-1" >
                             </div>
                             <div class="col-6">
                                 <img class="hero-img rounded my-2" src="{{ asset('./../pos/uploads/slider_image/'.$herotwo?->slider_image) }}" alt="card-img-1" >
-                            </div>
-                            <div class="col-6">
-                                <img class="hero-img rounded my-2" src="{{ asset('./../pos/uploads/slider_image/'.$herotwo?->slider_image) }}" alt="card-img-1" >
-                            </div>
+                            </div> --}}
                         </div>
                         <!-- <div class="row"> -->
                         {{-- <img class="hero-img rounded" src="{{ asset('./../pos/uploads/slider_image/'.$herotwo?->slider_image) }}" alt="card-img-1" style="height: 150px;">

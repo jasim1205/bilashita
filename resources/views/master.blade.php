@@ -182,16 +182,16 @@
                     </p>
                     <div class="social-icon">
                         <a href="{{ \App\Models\FrontSettings::first()->facebooklink }}"><i class="bi bi-facebook"></i></a>
-                        <a href="{{ \App\Models\FrontSettings::first()->twitterlink }}"><i class="bi bi-twitter"></i></a>
+                        <a href="{{ \App\Models\FrontSettings::first()->twitterlink }}"><i class="bi bi-tiktok"></i></a>
                         <a href="{{ \App\Models\FrontSettings::first()->linkdinlink }}"><i class="bi bi-linkedin"></i></a>
                         <a href="{{ \App\Models\FrontSettings::first()->youtubelink }}"><i class="bi bi-youtube"></i></a>
                     </div>
                 </div>
                 <div class="col-sm-6 p-5">
-                    <div class="d-flex apps-div">
+                    {{-- <div class="d-flex apps-div">
                         <img src="{{ asset('assets/resource') }}/img/androied.png" alt="" />
                         <img src="{{ asset('assets/resource') }}/img/apple.png" alt="" />
-                    </div>
+                    </div> --}}
                     <div class="address text-white">
                         <i class="bi bi-geo-alt-fill"> </i>
                         <p>{{ \App\Models\FrontSettings::first()->address }}
