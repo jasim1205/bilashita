@@ -182,8 +182,9 @@
                     </p>
                     <div class="social-icon">
                         <a href="{{ \App\Models\FrontSettings::first()->facebooklink }}"><i class="bi bi-facebook"></i></a>
-                        <a href="{{ \App\Models\FrontSettings::first()->twitterlink }}"><i class="bi bi-tiktok"></i></a>
-                        <a href="{{ \App\Models\FrontSettings::first()->linkdinlink }}"><i class="bi bi-linkedin"></i></a>
+                        <a href="{{ \App\Models\FrontSettings::first()->twitterlink }}"><i class="bi bi-twitter"></i></a>
+                        <a href="{{ \App\Models\FrontSettings::first()->linkdinlink }}"><i class="bi bi-tiktok"></i></a>
+                        {{-- <a href="{{ \App\Models\FrontSettings::first()->linkdinlink }}"><i class="bi bi-linkedin"></i></a> --}}
                         <a href="{{ \App\Models\FrontSettings::first()->youtubelink }}"><i class="bi bi-youtube"></i></a>
                     </div>
                 </div>
