@@ -86,7 +86,7 @@
                 @endphp 
                 
             <div class="product-ads-group mx-auto">
-                <!-- <div class="row"> -->
+                <div class="row">
                 @foreach ($gallery as $item)
                 <a href="{{$item?->link}}" target="_blank">
                     <img class="col-md-4 hero-img rounded" src="{{ asset('./../pos/uploads/gallery_image/'.$item?->image) }}" width="180px" height="150px" alt="card-img-1">
@@ -97,7 +97,7 @@
                 <img class="hero-img" src="{{ asset('assets/images/product-ads-5.png') }}" width="200px" alt="card-img-1">
                 <img class="hero-img" src="{{ asset('assets/images/product-ads-6.png') }}" width="200px" alt="card-img-1"> --}}
                 @endforeach
-                <!-- </div> -->
+                </div>
             </div>
         </div>
     </section>
