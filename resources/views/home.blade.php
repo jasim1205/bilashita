@@ -93,7 +93,7 @@
             <div class="product-ads-group mx-auto">
                 <div class="row">
                     @foreach ($gallery as $item)
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <a href="{{ $item?->link }}" target="_blank">
                                 <img class="hero-img rounded"
                                     src="{{ asset('./../pos/uploads/gallery_image/' . $item?->image) }}" width="180px"
