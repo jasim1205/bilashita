@@ -49,7 +49,7 @@
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '{your-pixel-id-goes-here}');
+        fbq('init',1113706053836356 );
         fbq('track', 'PageView');
     </script>
     <noscript>
